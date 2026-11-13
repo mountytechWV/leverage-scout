@@ -5,6 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Leverage Scout</title>
 <meta name="description" content="Search every leveraged and inverse ETF by company, ETF ticker, stock ticker, sector and industry.">
+<meta name="theme-color" content="#0d1117">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="Lev Scout">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta property="og:title" content="Leverage Scout">
+<meta property="og:description" content="Every US leveraged and inverse ETF in one searchable list, with volume, liquidity and a Day Trade filter.">
+<meta property="og:image" content="https://mountytechwv.github.io/leverage-scout/icons/icon-512.png">
+<meta property="og:url" content="https://mountytechwv.github.io/leverage-scout/">
+<meta name="twitter:card" content="summary">
 <style>
   :root{
     --bg:#0d1117; --panel:#151b23; --panel2:#1c2430; --line:#2a3441;
@@ -433,6 +447,9 @@
   render();
   $("q").focus();
 })();
+if ("serviceWorker" in navigator && location.protocol === "https:") {
+  navigator.serviceWorker.register("sw.js").catch(() => {});
+}
 </script>
 </body>
 </html>

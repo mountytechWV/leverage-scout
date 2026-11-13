@@ -90,6 +90,11 @@
   .liq.Illiquid{color:#ff5c5c;background:rgba(255,92,92,.12)}
   .liq.None{color:var(--muted)}
   .dim{color:var(--muted)}
+  .star{background:none;border:0;padding:0 2px;font-size:17px;line-height:1;color:#4a5566;cursor:pointer}
+  .star:hover{color:var(--accent)}
+  .star.on{color:var(--accent)}
+  #favOnly.on{background:var(--accent);color:#111;border-color:var(--accent)}
+  th.favcol,td.favcol{width:34px;padding-right:0;text-align:center}
   #saveDef.saved{color:var(--accent);border-color:var(--accent)}
   .linkish{background:none;border:0;color:var(--muted);text-decoration:underline;padding:7px 4px}
   .linkish:hover{color:var(--text)}
@@ -127,6 +132,8 @@
 
   <div class="filters">
     <button id="dt" title="Avg dollar volume $25M+, price $5+, average daily range 4%+">&#9889; Day Trade</button>
+    <button id="favOnly" title="Show only the funds you starred">&#9734; Favorites</button>
+    <button id="favClear" class="linkish" hidden title="Remove the star from every fund">Clear favorites</button>
     <div class="seg" id="dirSeg" role="group" aria-label="Direction">
       <button data-v="" class="on">All</button>
       <button data-v="Long">Long</button>
@@ -164,6 +171,7 @@
     <span><b id="shown">0</b> of <span id="total">0</span> funds</span>
     <span id="split"></span>
     <span class="spacer"></span>
+    <button id="tv" title="Download the funds shown as a TradingView watchlist (Watchlist menu > Import list)">TradingView list</button>
     <button id="csv">Export CSV</button>
   </div>
 
@@ -175,7 +183,7 @@
     <div class="empty" id="empty" hidden>No funds match. Try a ticker, a company name, or clear a filter.</div>
   </div>
 
-  <p class="note">Click an underlying ticker to see every fund on it. Click an ETF ticker to open its TradingView chart (hover it for the full fund name).
+  <p class="note">Click the &#9734; on any fund to add it to your favorites (saved in this browser). TradingView list downloads the funds shown as a watchlist you can import in TradingView (Watchlist menu &gt; Import list). Click an underlying ticker to see every fund on it. Click an ETF ticker to open its TradingView chart (hover it for the full fund name).
     Volume, $ volume and ADR (average daily range, high vs low) are 20-trading-day averages. Liquidity: High = $100M+ a day, Good = $20M+, Thin = $2M+, Illiquid = under $2M.
     Leveraged and inverse funds reset daily, so returns over longer periods drift from the stated multiple.
     Data is for education, not a recommendation.</p>
@@ -204,6 +212,7 @@
 
   const LIQ_RANK = {High:4, Good:3, Thin:2, Illiquid:1, None:0};
   const COLS = [
+    {k:"fav", label:"&#9733;"},
     {k:"t",   label:"ETF"},
     {k:"dir", label:"Direction"},
     {k:"lev", label:"Lev", num:true},
@@ -224,7 +233,16 @@
 
   const $ = id => document.getElementById(id);
   const KEYS = ["q","dir","levs","kind","sec","ind","iss","mv","madr","dt"];
-  const blank = () => ({q:"", dir:"", levs:[], kind:"", sec:"", ind:"", iss:"", mv:"", madr:"", dt:false});
+  const blank = () => ({q:"", dir:"", levs:[], kind:"", sec:"", ind:"", iss:"", mv:"", madr:"", dt:false, fav:false});
+
+  // ---------- favorites (stored in this browser only) ----------
+  const FAV_STORE = "leverageScout.favorites.v1";
+  const favs = new Set((() => {
+    try { return JSON.parse(localStorage.getItem(FAV_STORE) || "[]"); } catch (e) { return []; }
+  })());
+  function saveFavs(){
+    try { localStorage.setItem(FAV_STORE, JSON.stringify([...favs].sort())); } catch (e) {}
+  }
   const state = Object.assign(blank(), {sortK: HAS_VOL ? "adv" : "u", sortAsc: !HAS_VOL});
 
   // ---------- helpers ----------
@@ -294,12 +312,14 @@
       (!mv   || (r.av ?? 0) >= mv) &&
       (!madr || (r.adr ?? 0) >= madr) &&
       (!state.dt || dayTradeOk(r)) &&
+      (!state.fav || favs.has(r.t)) &&
       terms.every(t => r._hay.includes(t))
     );
     const k = state.sortK, dir = state.sortAsc ? 1 : -1;
     const val = r => {
       if (k === "u") return (r.u || r.un || "~").toLowerCase();
       if (k === "liq") return r.adv ?? null;
+      if (k === "fav") return favs.has(r.t) ? 0 : 1;
       const v = r[k];
       return (v == null || v === "") ? null : (typeof v === "string" ? v.toLowerCase() : v);
     };
@@ -322,6 +342,8 @@
   // ---------- render ----------
   function cell(r, c, terms){
     switch (c.k){
+      case "fav": { const on = favs.has(r.t);
+        return `<td class="favcol"><button class="star${on ? " on" : ""}" data-t="${esc(r.t)}" title="${on ? "Remove from" : "Add to"} favorites" aria-label="Favorite ${esc(r.t)}">${on ? "&#9733;" : "&#9734;"}</button></td>`; }
       case "t":   return `<td><a class="tk" title="${esc(r.n)}" href="https://www.tradingview.com/chart/?symbol=${encodeURIComponent(r.t)}" target="_blank" rel="noopener">${hl(r.t, terms)}</a>${r.type === "ETN" ? ' <span class="kind">ETN</span>' : ""}</td>`;
       case "dir": return `<td><span class="pill ${r.dir}">${r.dir}</span></td>`;
       case "lev": return `<td class="num lev">${r.dir === "Inverse" ? "-" : ""}${r.lev}x</td>`;
@@ -340,7 +362,7 @@
   function renderHead(){
     $("head").innerHTML = COLS.map(c => {
       const on = state.sortK === c.k;
-      return `<th data-k="${c.k}" class="${on ? "sorted" : ""}${c.num ? " num" : ""}">${c.label}${on ? (state.sortAsc ? " ▲" : " ▼") : ""}</th>`;
+      return `<th data-k="${c.k}" class="${on ? "sorted" : ""}${c.num ? " num" : ""}${c.k === "fav" ? " favcol" : ""}" ${c.k === "fav" ? 'title="Sort favorites to the top"' : ""}>${c.label}${on ? (state.sortAsc ? " ▲" : " ▼") : ""}</th>`;
     }).join("");
   }
   function render(){
@@ -353,6 +375,12 @@
     $("rows").innerHTML = rows.slice(0, 1500).map(r =>
       `<tr>${COLS.map(c => cell(r, c, terms)).join("")}</tr>`).join("");
     $("dt").classList.toggle("on", state.dt);
+    $("favOnly").classList.toggle("on", state.fav);
+    $("favOnly").innerHTML = (state.fav ? "&#9733;" : "&#9734;") + " Favorites" + (favs.size ? ` (${favs.size})` : "");
+    $("favClear").hidden = !favs.size;
+    $("empty").textContent = state.fav && !favs.size
+      ? "No favorites yet. Click the \u2606 next to any fund to add it."
+      : "No funds match. Try a ticker, a company name, or clear a filter.";
     $("dtnote").hidden = !state.dt;
     document.querySelectorAll("#levChips .chip").forEach(b => b.classList.toggle("on", state.levs.includes(b.dataset.v)));
     renderHead();
@@ -386,7 +414,7 @@
   const snapshot = () => JSON.stringify({
     q: state.q, dir: state.dir, levs: [...state.levs].sort(), kind: state.kind, sec: state.sec,
     ind: state.ind, iss: state.iss, mv: state.mv, madr: state.madr, dt: state.dt,
-    sortK: state.sortK, sortAsc: state.sortAsc
+    fav: state.fav, sortK: state.sortK, sortAsc: state.sortAsc
   });
   function getDefault(){
     try { return localStorage.getItem(STORE); } catch (e) { return null; }
@@ -412,6 +440,26 @@
     refreshIndustries();
     $("ind").value = state.ind; state.ind = $("ind").value;
     document.querySelectorAll("#dirSeg button").forEach(b => b.classList.toggle("on", b.dataset.v === state.dir));
+  }
+
+  // ---------- TradingView watchlist ----------
+  // Same format TradingView exports: one line, comma separated,
+  // "###SECTION" headers followed by EXCHANGE:TICKER symbols.
+  function exportTradingView(){
+    const {rows} = filtered();
+    if (!rows.length) return;
+    const sym = r => r.ex ? `${r.ex}:${r.t}` : r.t;
+    const long = rows.filter(r => r.dir === "Long").map(sym);
+    const inv  = rows.filter(r => r.dir === "Inverse").map(sym);
+    const parts = [];
+    if (long.length) parts.push("###LEVERAGED LONG", ...long);
+    if (inv.length)  parts.push("###INVERSE", ...inv);
+    const blob = new Blob([parts.join(",")], {type:"text/plain"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = state.fav ? "Leverage_Scout_Favorites.txt" : "Leverage_Scout.txt";
+    a.click();
+    URL.revokeObjectURL(a.href);
   }
 
   // ---------- CSV ----------
@@ -462,6 +510,13 @@
     render();
   });
   $("rows").addEventListener("click", e => {
+    const st = e.target.closest(".star");
+    if (st) {
+      const tk = st.dataset.t;
+      favs.has(tk) ? favs.delete(tk) : favs.add(tk);
+      saveFavs(); render();
+      return;
+    }
     const u = e.target.closest(".u"); if (!u) return;
     state.q = u.dataset.u; $("q").value = state.q; render();
     window.scrollTo({top:0, behavior:"smooth"});
@@ -471,6 +526,23 @@
     syncControls(); render(); $("q").focus();
   });
   $("csv").addEventListener("click", exportCsv);
+  $("tv").addEventListener("click", exportTradingView);
+  $("favOnly").addEventListener("click", () => { state.fav = !state.fav; render(); });
+  // two-step confirm: first click arms it, second click within 4s clears
+  let clearTimer = null;
+  $("favClear").addEventListener("click", () => {
+    const btn = $("favClear");
+    if (!clearTimer) {
+      btn.textContent = `Click again to clear all ${favs.size}`;
+      btn.style.color = "var(--inv)";
+      clearTimer = setTimeout(() => { clearTimer = null; btn.textContent = "Clear favorites"; btn.style.color = ""; }, 4000);
+      return;
+    }
+    clearTimeout(clearTimer); clearTimer = null;
+    favs.clear(); saveFavs();
+    btn.textContent = "Clear favorites"; btn.style.color = "";
+    render();
+  });
   $("saveDef").addEventListener("click", () => {
     try { localStorage.setItem(STORE, snapshot()); }
     catch (e) { alert("Your browser blocked saving settings (private mode?)."); }

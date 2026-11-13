@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leverage Scout</title>
+<meta name="description" content="Search every leveraged and inverse ETF by company, ETF ticker, stock ticker, sector and industry.">
+<style>
+  :root{
+    --bg:#0d1117; --panel:#151b23; --panel2:#1c2430; --line:#2a3441;
+    --text:#e6edf3; --muted:#8b98a8; --accent:#f5b83d;
+    --long:#2ecc71; --long-bg:rgba(46,204,113,.12);
+    --inv:#ff5c5c; --inv-bg:rgba(255,92,92,.12);
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  header{padding:22px 24px 14px;border-bottom:1px solid var(--line);
+    display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px 24px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{width:38px;height:38px;border-radius:9px;background:var(--panel2);
+    border:1px solid var(--line);display:grid;place-items:center}
+  h1{margin:0;font-size:22px;letter-spacing:.3px}
+  h1 span{color:var(--accent)}
+  .tag{color:var(--muted);font-size:13px;margin-top:2px}
+  .meta{margin-left:auto;color:var(--muted);font-size:12px;text-align:right}
+  main{padding:16px 24px 40px}
+  .search{display:flex;gap:10px;flex-wrap:wrap}
+  .search input{flex:1 1 360px;background:var(--panel);border:1px solid var(--line);
+    color:var(--text);border-radius:10px;padding:12px 14px;font-size:16px;outline:none}
+  .search input:focus{border-color:var(--accent)}
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 6px}
+  select,button{background:var(--panel);color:var(--text);border:1px solid var(--line);
+    border-radius:8px;padding:7px 10px;font-size:13px;cursor:pointer}
+  select:focus,button:focus-visible{outline:1px solid var(--accent)}
+  button:hover{border-color:var(--accent)}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .seg button{border:0;border-radius:0;border-right:1px solid var(--line)}
+  .seg button:last-child{border-right:0}
+  .seg button.on{background:var(--panel2);color:var(--accent)}
+  .summary{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;color:var(--muted);
+    font-size:13px;margin:10px 0}
+  .summary b{color:var(--text)}
+  .spacer{flex:1}
+  .wrap{border:1px solid var(--line);border-radius:12px;overflow:auto;max-height:calc(100vh - 250px)}
+  table{width:100%;border-collapse:collapse;min-width:900px}
+  th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+  th{position:sticky;top:0;background:var(--panel2);font-size:12px;text-transform:uppercase;
+    letter-spacing:.5px;color:var(--muted);cursor:pointer;user-select:none;z-index:1}
+  th:hover{color:var(--text)}
+  th.sorted{color:var(--accent)}
+  tbody tr:hover{background:var(--panel)}
+  td.name{white-space:normal;min-width:240px;color:var(--muted)}
+  .tk{font-family:var(--mono);font-weight:700;color:var(--text);text-decoration:none}
+  .tk:hover{color:var(--accent);text-decoration:underline}
+  .u{font-family:var(--mono);font-weight:600;cursor:pointer}
+  .u:hover{color:var(--accent)}
+  .pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:600}
+  .Long{color:var(--long);background:var(--long-bg)}
+  .Inverse{color:var(--inv);background:var(--inv-bg)}
+  .lev{font-family:var(--mono);font-weight:700}
+  .num{text-align:right;font-family:var(--mono)}
+  .kind{color:var(--muted);font-size:12px}
+  .chips{display:inline-flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .chips .lbl{color:var(--muted);font-size:12px;margin-right:2px}
+  .chip{padding:6px 11px;border-radius:999px;font-family:var(--mono);font-weight:700}
+  .chip.on{background:var(--accent);color:#111;border-color:var(--accent)}
+  #dt{font-weight:700}
+  #dt.on{background:var(--accent);color:#111;border-color:var(--accent)}
+  .dtnote{color:var(--muted);font-size:12px;margin:2px 0 4px}
+  .liq{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:600}
+  .liq.High{color:#2ecc71;background:rgba(46,204,113,.12)}
+  .liq.Good{color:#7ec8ff;background:rgba(126,200,255,.12)}
+  .liq.Thin{color:#f5b83d;background:rgba(245,184,61,.12)}
+  .liq.Illiquid{color:#ff5c5c;background:rgba(255,92,92,.12)}
+  .liq.None{color:var(--muted)}
+  .dim{color:var(--muted)}
+  .empty{padding:40px;text-align:center;color:var(--muted)}
+  .note{color:var(--muted);font-size:12px;margin-top:14px}
+  mark{background:rgba(245,184,61,.25);color:inherit;border-radius:3px}
+  @media (max-width:760px){
+    header,main{padding-left:12px;padding-right:12px}
+    .meta{margin-left:0;text-align:left}
+    .wrap{max-height:none}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <div class="logo" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f5b83d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/><path d="M7.5 12l2-2.5 1.5 1.5 2.5-3.5"/>
+      </svg>
+    </div>
+    <div>
+      <h1>Leverage <span>Scout</span></h1>
+      <div class="tag">Every leveraged and inverse ETF, searchable by company, ticker, sector and industry</div>
+    </div>
+  </div>
+  <div class="meta" id="meta"></div>
+</header>
+
+<main>
+  <div class="search">
+    <input id="q" type="search" autocomplete="off" spellcheck="false"
+      placeholder="Search: NVDA, Tesla, SOXL, semiconductors, biotech, Direxion...">
+  </div>
+
+  <div class="filters">
+    <button id="dt" title="Avg dollar volume $25M+, price $5+, average daily range 4%+">&#9889; Day Trade</button>
+    <div class="seg" id="dirSeg" role="group" aria-label="Direction">
+      <button data-v="" class="on">All</button>
+      <button data-v="Long">Long</button>
+      <button data-v="Inverse">Inverse</button>
+    </div>
+    <div class="chips" id="levChips" role="group" aria-label="Leverage"><span class="lbl">Leverage</span></div>
+  </div>
+  <div class="filters">
+    <select id="kind" aria-label="Type"><option value="">All types</option></select>
+    <select id="sec" aria-label="Sector"><option value="">All sectors</option></select>
+    <select id="ind" aria-label="Industry"><option value="">All industries</option></select>
+    <select id="iss" aria-label="Issuer"><option value="">All issuers</option></select>
+    <select id="mv" aria-label="Minimum average volume">
+      <option value="">Any volume</option>
+      <option value="100000">Avg vol 100K+</option>
+      <option value="500000">Avg vol 500K+</option>
+      <option value="1000000">Avg vol 1M+</option>
+      <option value="5000000">Avg vol 5M+</option>
+      <option value="10000000">Avg vol 10M+</option>
+    </select>
+    <select id="madr" aria-label="Minimum average daily range">
+      <option value="">Any range</option>
+      <option value="3">ADR 3%+</option>
+      <option value="5">ADR 5%+</option>
+      <option value="8">ADR 8%+</option>
+      <option value="12">ADR 12%+</option>
+    </select>
+    <button id="reset">Reset</button>
+  </div>
+  <div class="dtnote" id="dtnote" hidden>Day Trade: avg dollar volume $25M+, price $5+, average daily range 4%+ (20-day averages).</div>
+
+  <div class="summary">
+    <span><b id="shown">0</b> of <span id="total">0</span> funds</span>
+    <span id="split"></span>
+    <span class="spacer"></span>
+    <button id="csv">Export CSV</button>
+  </div>
+
+  <div class="wrap">
+    <table>
+      <thead><tr id="head"></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="empty" id="empty" hidden>No funds match. Try a ticker, a company name, or clear a filter.</div>
+  </div>
+
+  <p class="note">Click an underlying ticker to see every fund on it. Click an ETF ticker to open its TradingView chart (hover it for the full fund name).
+    Volume, $ volume and ADR (average daily range, high vs low) are 20-trading-day averages. Liquidity: High = $100M+ a day, Good = $20M+, Thin = $2M+, Illiquid = under $2M.
+    Leveraged and inverse funds reset daily, so returns over longer periods drift from the stated multiple.
+    Data is for education, not a recommendation.</p>
+</main>
+
+<script src="data/etfs.js"></script>
+<script>
+(function(){
+  const DATA = window.LEVERAGE_SCOUT || {etfs:[], updated:"", source:""};
+  const DT = {adv:25e6, px:5, adr:4};   // Day Trade rules
+
+  function liqTier(adv){
+    if (adv == null) return "None";
+    if (adv >= 100e6) return "High";
+    if (adv >= 20e6) return "Good";
+    if (adv >= 2e6) return "Thin";
+    return "Illiquid";
+  }
+  const ALL = DATA.etfs.map(r => Object.assign({}, r, {
+    liq: liqTier(r.adv),
+    _hay: [r.t, r.n, r.iss, r.u, r.un, r.sec, r.ind, r.kind, r.dir, r.lev + "x"]
+      .filter(Boolean).join(" ").toLowerCase()
+  }));
+  const HAS_VOL = ALL.some(r => r.adv != null);
+  const has = k => ALL.some(r => r[k] != null && r[k] !== "");
+
+  const LIQ_RANK = {High:4, Good:3, Thin:2, Illiquid:1, None:0};
+  const COLS = [
+    {k:"t",   label:"ETF"},
+    {k:"dir", label:"Direction"},
+    {k:"lev", label:"Lev", num:true},
+    {k:"u",   label:"Underlying"},
+    {k:"un",  label:"Company / Index"},
+    {k:"sec", label:"Sector"},
+    {k:"ind", label:"Industry"},
+    {k:"px",  label:"Price", num:true, show:has("px")},
+    {k:"av",  label:"Avg Vol", num:true, show:has("av")},
+    {k:"adv", label:"Avg $ Vol", num:true, show:has("adv")},
+    {k:"liq", label:"Liquidity", show:HAS_VOL},
+    {k:"adr", label:"ADR %", num:true, show:has("adr")},
+    {k:"iss", label:"Issuer"},
+    {k:"er",  label:"Exp %", num:true, show:has("er")},
+    {k:"aum", label:"AUM", num:true, show:has("aum")},
+    {k:"inc", label:"Since", show:has("inc")},
+  ].filter(c => c.show !== false);
+
+  const $ = id => document.getElementById(id);
+  const KEYS = ["q","dir","levs","kind","sec","ind","iss","mv","madr","dt"];
+  const blank = () => ({q:"", dir:"", levs:[], kind:"", sec:"", ind:"", iss:"", mv:"", madr:"", dt:false});
+  const state = Object.assign(blank(), {sortK: HAS_VOL ? "adv" : "u", sortAsc: !HAS_VOL});
+
+  // ---------- helpers ----------
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const uniq = arr => [...new Set(arr.filter(v => v !== "" && v != null))];
+  function big(v, dollar){
+    if (v == null || v === "") return "";
+    v = Number(v); if (!isFinite(v)) return "";
+    const p = dollar ? "$" : "";
+    if (v >= 1e9) return p + (v/1e9).toFixed(1) + "B";
+    if (v >= 1e6) return p + (v/1e6).toFixed(v >= 1e8 ? 0 : 1) + "M";
+    if (v >= 1e3) return p + (v/1e3).toFixed(0) + "K";
+    return p + v.toFixed(0);
+  }
+  function fmtEr(v){
+    if (v == null || v === "") return "";
+    v = Number(v); if (!isFinite(v)) return "";
+    return (v < 0.05 ? v*100 : v).toFixed(2);
+  }
+  const fmtPx = v => v == null ? "" : Number(v).toFixed(2);
+  const fmtAdr = v => v == null ? "" : Number(v).toFixed(1);
+  function hl(text, terms){
+    let out = esc(text);
+    terms.forEach(t => {
+      if (t.length < 2) return;
+      const re = new RegExp("(" + t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "ig");
+      out = out.replace(re, "<mark>$1</mark>");
+    });
+    return out;
+  }
+  function fillSelect(sel, values, label){
+    const cur = sel.value;
+    sel.innerHTML = `<option value="">${label}</option>` +
+      values.map(v => `<option value="${esc(v)}">${esc(v)}</option>`).join("");
+    sel.value = values.map(String).includes(cur) ? cur : "";
+  }
+  const dayTradeOk = r => (r.adv ?? 0) >= DT.adv && (r.px ?? 0) >= DT.px && (r.adr ?? 0) >= DT.adr;
+
+  // ---------- filters ----------
+  function populate(){
+    const levs = uniq(ALL.map(r => r.lev)).sort((a,b) => a-b);
+    $("levChips").insertAdjacentHTML("beforeend",
+      levs.map(v => `<button class="chip" data-v="${v}">${v}x</button>`).join(""));
+    fillSelect($("kind"), uniq(ALL.map(r => r.kind)).sort(), "All types");
+    fillSelect($("sec"), uniq(ALL.map(r => r.sec)).sort(), "All sectors");
+    fillSelect($("iss"), uniq(ALL.map(r => r.iss)).sort(), "All issuers");
+    refreshIndustries();
+    if (!HAS_VOL) { ["dt","mv","madr"].forEach(id => $(id).hidden = true); }
+  }
+  function refreshIndustries(){
+    const pool = state.sec ? ALL.filter(r => r.sec === state.sec) : ALL;
+    fillSelect($("ind"), uniq(pool.map(r => r.ind)).sort(), "All industries");
+    state.ind = $("ind").value;
+  }
+
+  function filtered(){
+    const terms = state.q.toLowerCase().split(/\s+/).filter(Boolean);
+    const qUp = state.q.trim().toUpperCase();
+    const mv = Number(state.mv) || 0, madr = Number(state.madr) || 0;
+    let rows = ALL.filter(r =>
+      (!state.dir  || r.dir === state.dir) &&
+      (!state.levs.length || state.levs.includes(String(r.lev))) &&
+      (!state.kind || r.kind === state.kind) &&
+      (!state.sec  || r.sec === state.sec) &&
+      (!state.ind  || r.ind === state.ind) &&
+      (!state.iss  || r.iss === state.iss) &&
+      (!mv   || (r.av ?? 0) >= mv) &&
+      (!madr || (r.adr ?? 0) >= madr) &&
+      (!state.dt || dayTradeOk(r)) &&
+      terms.every(t => r._hay.includes(t))
+    );
+    const k = state.sortK, dir = state.sortAsc ? 1 : -1;
+    const val = r => {
+      if (k === "u") return (r.u || r.un || "~").toLowerCase();
+      if (k === "liq") return r.adv ?? null;
+      const v = r[k];
+      return (v == null || v === "") ? null : (typeof v === "string" ? v.toLowerCase() : v);
+    };
+    rows.sort((a,b) => {
+      if (qUp) {
+        const ea = (a.t === qUp || a.u === qUp) ? 0 : 1, eb = (b.t === qUp || b.u === qUp) ? 0 : 1;
+        if (ea !== eb) return ea - eb;
+      }
+      const va = val(a), vb = val(b);
+      if (va === null && vb !== null) return 1;
+      if (vb === null && va !== null) return -1;
+      if (va < vb) return -dir; if (va > vb) return dir;
+      if (a.dir !== b.dir) return a.dir === "Long" ? -1 : 1;
+      if (a.lev !== b.lev) return b.lev - a.lev;
+      return a.t < b.t ? -1 : 1;
+    });
+    return {rows, terms};
+  }
+
+  // ---------- render ----------
+  function cell(r, c, terms){
+    switch (c.k){
+      case "t":   return `<td><a class="tk" title="${esc(r.n)}" href="https://www.tradingview.com/chart/?symbol=${encodeURIComponent(r.t)}" target="_blank" rel="noopener">${hl(r.t, terms)}</a>${r.type === "ETN" ? ' <span class="kind">ETN</span>' : ""}</td>`;
+      case "dir": return `<td><span class="pill ${r.dir}">${r.dir}</span></td>`;
+      case "lev": return `<td class="num lev">${r.dir === "Inverse" ? "-" : ""}${r.lev}x</td>`;
+      case "u":   return `<td>${r.u ? `<span class="u" data-u="${esc(r.u)}" title="Show all funds on ${esc(r.u)}">${hl(r.u, terms)}</span>` : `<span class="kind">${esc(r.kind || "")}</span>`}</td>`;
+      case "px":  return `<td class="num">${fmtPx(r.px)}</td>`;
+      case "av":  return `<td class="num">${big(r.av)}</td>`;
+      case "adv": return `<td class="num">${big(r.adv, true)}</td>`;
+      case "liq": return `<td><span class="liq ${r.liq}">${r.liq === "None" ? "No data" : r.liq}</span></td>`;
+      case "adr": return `<td class="num">${fmtAdr(r.adr)}</td>`;
+      case "er":  return `<td class="num">${fmtEr(r.er)}</td>`;
+      case "aum": return `<td class="num">${big(r.aum, true)}</td>`;
+      case "inc": return `<td>${esc(r.inc || "")}</td>`;
+      default:    return `<td>${hl(r[c.k] || "", terms)}</td>`;
+    }
+  }
+  function renderHead(){
+    $("head").innerHTML = COLS.map(c => {
+      const on = state.sortK === c.k;
+      return `<th data-k="${c.k}" class="${on ? "sorted" : ""}${c.num ? " num" : ""}">${c.label}${on ? (state.sortAsc ? " ▲" : " ▼") : ""}</th>`;
+    }).join("");
+  }
+  function render(){
+    const {rows, terms} = filtered();
+    $("shown").textContent = rows.length;
+    $("total").textContent = ALL.length;
+    const longs = rows.filter(r => r.dir === "Long").length;
+    $("split").innerHTML = `<span class="pill Long">${longs} long</span> <span class="pill Inverse">${rows.length - longs} inverse</span>`;
+    $("empty").hidden = rows.length > 0;
+    $("rows").innerHTML = rows.slice(0, 1500).map(r =>
+      `<tr>${COLS.map(c => cell(r, c, terms)).join("")}</tr>`).join("");
+    $("dt").classList.toggle("on", state.dt);
+    $("dtnote").hidden = !state.dt;
+    document.querySelectorAll("#levChips .chip").forEach(b => b.classList.toggle("on", state.levs.includes(b.dataset.v)));
+    renderHead();
+    writeHash();
+  }
+
+  // ---------- URL hash so a search can be shared ----------
+  function writeHash(){
+    const p = new URLSearchParams();
+    KEYS.forEach(k => {
+      const v = state[k];
+      if (Array.isArray(v) ? v.length : v) p.set(k, Array.isArray(v) ? v.join(",") : (v === true ? "1" : v));
+    });
+    const h = p.toString();
+    history.replaceState(null, "", h ? "#" + h : location.pathname + location.search);
+  }
+  function readHash(){
+    const p = new URLSearchParams(location.hash.slice(1));
+    KEYS.forEach(k => {
+      const v = p.get(k); if (!v) return;
+      state[k] = k === "levs" ? v.split(",") : (k === "dt" ? true : v);
+    });
+  }
+  function syncControls(){
+    $("q").value = state.q;
+    ["kind","sec","iss","mv","madr"].forEach(k => $(k).value = state[k]);
+    refreshIndustries();
+    $("ind").value = state.ind; state.ind = $("ind").value;
+    document.querySelectorAll("#dirSeg button").forEach(b => b.classList.toggle("on", b.dataset.v === state.dir));
+  }
+
+  // ---------- CSV ----------
+  function exportCsv(){
+    const {rows} = filtered();
+    const head = ["ETF","Fund Name","Direction","Leverage","Underlying","Company/Index","Sector","Industry","Price","Avg Volume","Avg Dollar Volume","Liquidity","ADR %","Issuer","Expense %","AUM","Inception","Type"];
+    const q = v => `"${String(v ?? "").replace(/"/g,'""')}"`;
+    const lines = [head.join(",")].concat(rows.map(r => [
+      r.t, r.n, r.dir, (r.dir === "Inverse" ? "-" : "") + r.lev + "x", r.u, r.un, r.sec, r.ind,
+      r.px ?? "", r.av ?? "", r.adv ?? "", r.liq === "None" ? "" : r.liq, r.adr ?? "",
+      r.iss, fmtEr(r.er), r.aum ?? "", r.inc, r.type
+    ].map(q).join(",")));
+    const blob = new Blob([lines.join("\n")], {type:"text/csv"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "leverage-scout.csv";
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+
+  // ---------- events ----------
+  let t;
+  $("q").addEventListener("input", e => { clearTimeout(t); t = setTimeout(() => { state.q = e.target.value; render(); }, 120); });
+  ["kind","iss","ind","mv","madr"].forEach(k => $(k).addEventListener("change", e => { state[k] = e.target.value; render(); }));
+  $("sec").addEventListener("change", e => { state.sec = e.target.value; refreshIndustries(); render(); });
+  $("dirSeg").addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    state.dir = b.dataset.v;
+    document.querySelectorAll("#dirSeg button").forEach(x => x.classList.toggle("on", x === b));
+    render();
+  });
+  $("levChips").addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    const v = b.dataset.v;
+    state.levs = state.levs.includes(v) ? state.levs.filter(x => x !== v) : state.levs.concat(v);
+    render();
+  });
+  $("dt").addEventListener("click", () => {
+    state.dt = !state.dt;
+    if (state.dt) { state.sortK = "adv"; state.sortAsc = false; }
+    render();
+  });
+  $("head").addEventListener("click", e => {
+    const th = e.target.closest("th"); if (!th) return;
+    const k = th.dataset.k;
+    if (state.sortK === k) state.sortAsc = !state.sortAsc;
+    else { state.sortK = k; state.sortAsc = !["lev","px","av","adv","liq","adr","aum"].includes(k); }
+    render();
+  });
+  $("rows").addEventListener("click", e => {
+    const u = e.target.closest(".u"); if (!u) return;
+    state.q = u.dataset.u; $("q").value = state.q; render();
+    window.scrollTo({top:0, behavior:"smooth"});
+  });
+  $("reset").addEventListener("click", () => {
+    Object.assign(state, blank());
+    syncControls(); render(); $("q").focus();
+  });
+  $("csv").addEventListener("click", exportCsv);
+
+  // ---------- init ----------
+  const upd = DATA.updated ? new Date(DATA.updated) : null;
+  $("meta").innerHTML = `${DATA.count || ALL.length} funds &middot; ${esc(DATA.source || "")}<br>Updated ${upd ? upd.toLocaleString() : "never"}`
+    + (HAS_VOL ? "" : `<br><span style="color:var(--accent)">Run a refresh to load volume data</span>`);
+  populate();
+  readHash();
+  syncControls();
+  render();
+  $("q").focus();
+})();
+</script>
+</body>
+</html>

@@ -285,6 +285,11 @@ def issuer_of(name):
     return name.split()[0] if name else ""
 
 
+# Massive exchange codes -> TradingView prefixes
+TV_EXCHANGE = {"XNAS": "NASDAQ", "XNYS": "NYSE", "ARCX": "AMEX", "XASE": "AMEX",
+               "BATS": "CBOE", "EDGX": "CBOE", "EDGA": "CBOE"}
+
+
 def fmt_lev(v):
     return int(v) if float(v).is_integer() else v
 
@@ -497,6 +502,7 @@ def main():
             "t": t, "n": name, "iss": issuer_of(name),
             "dir": lev[1], "lev": fmt_lev(lev[0]),
             "type": "ETN" if f.get("type") == "ETN" else "ETF",
+            "ex": TV_EXCHANGE.get(f.get("primary_exchange", ""), ""),
         }
         row.update(find_underlying(name, t, stock_syms, etf_syms, aliases))
         if row["kind"] == "Single Stock" and not row.get("un"):

@@ -90,6 +90,9 @@
   .liq.Illiquid{color:#ff5c5c;background:rgba(255,92,92,.12)}
   .liq.None{color:var(--muted)}
   .dim{color:var(--muted)}
+  #saveDef.saved{color:var(--accent);border-color:var(--accent)}
+  .linkish{background:none;border:0;color:var(--muted);text-decoration:underline;padding:7px 4px}
+  .linkish:hover{color:var(--text)}
   .empty{padding:40px;text-align:center;color:var(--muted)}
   .note{color:var(--muted);font-size:12px;margin-top:14px}
   mark{background:rgba(245,184,61,.25);color:inherit;border-radius:3px}
@@ -152,6 +155,8 @@
       <option value="12">ADR 12%+</option>
     </select>
     <button id="reset">Reset</button>
+    <button id="saveDef" title="Open Leverage Scout with these filters and sort every time">&#9733; Save as my default</button>
+    <button id="clearDef" class="linkish" hidden title="Forget your saved default view">Clear default</button>
   </div>
   <div class="dtnote" id="dtnote" hidden>Day Trade: avg dollar volume $25M+, price $5+, average daily range 4%+ (20-day averages).</div>
 
@@ -352,6 +357,7 @@
     document.querySelectorAll("#levChips .chip").forEach(b => b.classList.toggle("on", state.levs.includes(b.dataset.v)));
     renderHead();
     writeHash();
+    updateDefaultButtons();
   }
 
   // ---------- URL hash so a search can be shared ----------
@@ -366,10 +372,39 @@
   }
   function readHash(){
     const p = new URLSearchParams(location.hash.slice(1));
+    let found = false;
     KEYS.forEach(k => {
       const v = p.get(k); if (!v) return;
+      found = true;
       state[k] = k === "levs" ? v.split(",") : (k === "dt" ? true : v);
     });
+    return found;
+  }
+
+  // ---------- saved default view (stored in this browser only) ----------
+  const STORE = "leverageScout.defaultView.v1";
+  const snapshot = () => JSON.stringify({
+    q: state.q, dir: state.dir, levs: [...state.levs].sort(), kind: state.kind, sec: state.sec,
+    ind: state.ind, iss: state.iss, mv: state.mv, madr: state.madr, dt: state.dt,
+    sortK: state.sortK, sortAsc: state.sortAsc
+  });
+  function getDefault(){
+    try { return localStorage.getItem(STORE); } catch (e) { return null; }
+  }
+  function loadDefault(){
+    const raw = getDefault(); if (!raw) return false;
+    try {
+      const d = JSON.parse(raw);
+      Object.assign(state, blank(), d, {levs: Array.isArray(d.levs) ? d.levs : []});
+      return true;
+    } catch (e) { return false; }
+  }
+  function updateDefaultButtons(){
+    const raw = getDefault();
+    const same = raw && raw === snapshot();
+    $("saveDef").classList.toggle("saved", !!same);
+    $("saveDef").innerHTML = same ? "&#9733; My default" : "&#9733; Save as my default";
+    $("clearDef").hidden = !raw;
   }
   function syncControls(){
     $("q").value = state.q;
@@ -436,13 +471,22 @@
     syncControls(); render(); $("q").focus();
   });
   $("csv").addEventListener("click", exportCsv);
+  $("saveDef").addEventListener("click", () => {
+    try { localStorage.setItem(STORE, snapshot()); }
+    catch (e) { alert("Your browser blocked saving settings (private mode?)."); }
+    updateDefaultButtons();
+  });
+  $("clearDef").addEventListener("click", () => {
+    try { localStorage.removeItem(STORE); } catch (e) {}
+    updateDefaultButtons();
+  });
 
   // ---------- init ----------
   const upd = DATA.updated ? new Date(DATA.updated) : null;
   $("meta").innerHTML = `${DATA.count || ALL.length} funds &middot; ${esc(DATA.source || "")}<br>Updated ${upd ? upd.toLocaleString() : "never"}`
     + (HAS_VOL ? "" : `<br><span style="color:var(--accent)">Run a refresh to load volume data</span>`);
   populate();
-  readHash();
+  if (!readHash()) loadDefault();
   syncControls();
   render();
   $("q").focus();

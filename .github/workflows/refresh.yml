@@ -1,0 +1,39 @@
+name: Refresh ETF list
+
+on:
+  schedule:
+    # 8:23 PM Eastern (standard time), Monday to Friday, after the close
+    - cron: "23 1 * * 2-6"
+  workflow_dispatch:   # adds a "Run workflow" button on the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build ETF list
+        env:
+          MASSIVE_API_KEY: ${{ secrets.MASSIVE_API_KEY }}
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+        run: python scripts/build_etfs.py
+
+      - name: Commit updated data
+        run: |
+          git config user.name "leverage-scout-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/etfs.json data/etfs.js data/cache.json
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -m "Refresh ETF data"
+            git push
+          fi

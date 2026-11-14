@@ -176,12 +176,12 @@ THEMES = [
     (r"fang", "NYSE FANG+ Index", "Index", "Technology", "Mega-Cap Tech"),
     (r"magnificent|mag 7|mag7", "Magnificent 7", "Index", "Technology", "Mega-Cap Tech"),
     (r"semiconductor|\bsox\b", "Semiconductor Index (SOXX)", "Sector", "Technology", "Semiconductors"),
-    (r"nasdaq[- ]?100|\bqqq\b", "Nasdaq-100 (QQQ)", "Index", "Broad Market", "Large-Cap Growth"),
+    (r"nasdaq[- ]?100|\bqqq\b|innovation 100|us tech 100", "Nasdaq-100 (QQQ)", "Index", "Broad Market", "Large-Cap Growth"),
     (r"s&p ?500|\bspy\b|s&p500", "S&P 500 (SPY)", "Index", "Broad Market", "Large-Cap Blend"),
     (r"dow ?30|dow jones|\bdow\b", "Dow Jones Industrial Average (DIA)", "Index", "Broad Market", "Large-Cap Blend"),
     (r"russell ?2000|small ?cap", "Russell 2000 (IWM)", "Index", "Broad Market", "Small-Cap"),
     (r"mid ?cap", "S&P MidCap 400 (MDY)", "Index", "Broad Market", "Mid-Cap"),
-    (r"vix|volatility", "VIX Futures", "Volatility", "Volatility", "VIX Futures"),
+    (r"\bvix\b", "VIX Futures (VIX)", "Volatility", "Volatility", "VIX Futures"),
     (r"bitcoin", "Bitcoin", "Crypto", "Crypto", "Bitcoin"),
     (r"\bether\b|ethereum", "Ether", "Crypto", "Crypto", "Ether"),
     (r"solana", "Solana", "Crypto", "Crypto", "Solana"),
@@ -272,7 +272,7 @@ def parse_leverage(name):
 
 def is_excluded(name):
     low = name.lower()
-    if "vix" in low or "volatility" in low:
+    if re.search(r"\bvix\b", low):
         return False
     return any(p in low for p in EXCLUDE_PHRASES)
 
@@ -282,7 +282,7 @@ def issuer_of(name):
     for key, label in ISSUERS:
         if key in low:
             return label
-    return name.split()[0] if name else ""
+    return "Other"
 
 
 # Massive exchange codes -> TradingView prefixes
@@ -310,10 +310,12 @@ def find_underlying(name, own_ticker, stock_syms, etf_syms, aliases):
         if re.search(r"\b" + re.escape(alias) + r"\b", low):
             return {"u": aliases[alias], "kind": "Single Stock"}
 
-    # 3. index, sector, commodity or crypto theme
+    # 3. index, sector, commodity or crypto theme; the ETF in brackets
+    #    (QQQ, SPY, SOXX...) becomes the underlying so it groups and searches like a stock
     for pat, label, kind, sector, industry in THEMES:
         if re.search(pat, low):
-            return {"u": "", "un": label, "kind": kind, "sec": sector, "ind": industry}
+            m = re.search(r"\(([A-Z]{2,5})\)$", label)
+            return {"u": m.group(1) if m else "", "un": label, "kind": kind, "sec": sector, "ind": industry}
 
     # 4. another ETF named in the fund name
     for tok in re.findall(r"\b[A-Z]{2,5}\b", name):

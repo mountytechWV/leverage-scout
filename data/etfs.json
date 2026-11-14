@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-13T23:56:04+00:00",
+ "updated": "2026-11-14T00:08:00+00:00",
  "source": "Massive + Financial Modeling Prep",
  "count": 723,
  "etfs": [
@@ -11,7 +11,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "SOXX",
    "un": "Semiconductor Index (SOXX)",
    "kind": "Sector",
    "sec": "Technology",
@@ -24,7 +24,9 @@
    "av": 177083285,
    "adv": 12150395966,
    "adr": 14.38,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "TQQQ",
@@ -34,7 +36,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "NASDAQ",
-   "u": "",
+   "u": "QQQ",
    "un": "Nasdaq-100 (QQQ)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -47,7 +49,9 @@
    "av": 81896022,
    "adv": 5053499130,
    "adr": 5.95,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SOXS",
@@ -57,7 +61,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "SOXX",
    "un": "Semiconductor Index (SOXX)",
    "kind": "Sector",
    "sec": "Technology",
@@ -70,7 +74,9 @@
    "av": 91063842,
    "adv": 4852584161,
    "adr": 13.67,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SQQQ",
@@ -80,7 +86,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "NASDAQ",
-   "u": "",
+   "u": "QQQ",
    "un": "Nasdaq-100 (QQQ)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -93,7 +99,9 @@
    "av": 58181600,
    "adv": 2412596648,
    "adr": 5.86,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "RWM",
@@ -103,7 +111,7 @@
    "lev": 1,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "IWM",
    "un": "Russell 2000 (IWM)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -116,7 +124,9 @@
    "av": 65923471,
    "adv": 951828990,
    "adr": 1.57,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "PSQ",
@@ -126,7 +136,7 @@
    "lev": 1,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "QQQ",
    "un": "Nasdaq-100 (QQQ)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -139,7 +149,9 @@
    "av": 24623622,
    "adv": 650384386,
    "adr": 1.88,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "QID",
@@ -149,7 +161,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "QQQ",
    "un": "Nasdaq-100 (QQQ)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -162,7 +174,9 @@
    "av": 42800003,
    "adv": 629517690,
    "adr": 3.79,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "MUU",
@@ -222,7 +236,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "QQQ",
    "un": "Nasdaq-100 (QQQ)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -235,7 +249,9 @@
    "av": 6924570,
    "adv": 570124735,
    "adr": 3.87,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SPDN",
@@ -245,7 +261,7 @@
    "lev": 1,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "SPY",
    "un": "S&P 500 (SPY)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -258,7 +274,9 @@
    "av": 65096617,
    "adv": 560388105,
    "adr": 1.21,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SPXL",
@@ -268,7 +286,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "SPY",
    "un": "S&P 500 (SPY)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -281,7 +299,9 @@
    "av": 2051846,
    "adv": 554709434,
    "adr": 3.61,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "TSLL",
@@ -389,7 +409,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "SPY",
    "un": "S&P 500 (SPY)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -402,7 +422,9 @@
    "av": 11321844,
    "adv": 405207289,
    "adr": 3.54,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SNDQ",
@@ -437,7 +459,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "SPY",
    "un": "S&P 500 (SPY)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -450,7 +472,9 @@
    "av": 5554394,
    "adv": 376830158,
    "adr": 2.38,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SH",
@@ -460,7 +484,7 @@
    "lev": 1,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "SPY",
    "un": "S&P 500 (SPY)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -473,7 +497,9 @@
    "av": 11371267,
    "adv": 372574994,
    "adr": 1.17,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SPXS",
@@ -483,7 +509,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "SPY",
    "un": "S&P 500 (SPY)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -496,7 +522,9 @@
    "av": 14616778,
    "adv": 371224951,
    "adr": 3.55,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "UPRO",
@@ -506,7 +534,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "SPY",
    "un": "S&P 500 (SPY)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -519,7 +547,9 @@
    "av": 2626953,
    "adv": 370451095,
    "adr": 3.61,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "UVXY",
@@ -529,8 +559,8 @@
    "lev": 1.5,
    "type": "ETF",
    "ex": "CBOE",
-   "u": "",
-   "un": "VIX Futures",
+   "u": "VIX",
+   "un": "VIX Futures (VIX)",
    "kind": "Volatility",
    "sec": "Volatility",
    "ind": "VIX Futures",
@@ -542,7 +572,9 @@
    "av": 17278925,
    "adv": 331372686,
    "adr": 10.53,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "TNA",
@@ -552,7 +584,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "IWM",
    "un": "Russell 2000 (IWM)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -565,7 +597,9 @@
    "av": 5381167,
    "adv": 303718947,
    "adr": 4.81,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "TSLG",
@@ -600,7 +634,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "SPY",
    "un": "S&P 500 (SPY)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -613,7 +647,9 @@
    "av": 5285018,
    "adv": 295301515,
    "adr": 2.34,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "TZA",
@@ -623,7 +659,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "IWM",
    "un": "Russell 2000 (IWM)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -636,7 +672,9 @@
    "av": 5241253,
    "adv": 249218444,
    "adr": 4.76,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SPCH",
@@ -671,7 +709,7 @@
    "lev": 1,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "DIA",
    "un": "Dow Jones Industrial Average (DIA)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -684,7 +722,9 @@
    "av": 9519005,
    "adv": 207731292,
    "adr": 1.09,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "AMDL",
@@ -719,7 +759,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLE",
    "un": "Energy Sector (XLE)",
    "kind": "Sector",
    "sec": "Energy",
@@ -732,7 +772,9 @@
    "av": 24212699,
    "adv": 199033685,
    "adr": 4.74,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "GGLL",
@@ -792,7 +834,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XBI",
    "un": "Biotech Index (XBI)",
    "kind": "Sector",
    "sec": "Healthcare",
@@ -805,7 +847,9 @@
    "av": 24594591,
    "adv": 180771004,
    "adr": 10.03,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "GDXU",
@@ -815,7 +859,7 @@
    "lev": 3,
    "type": "ETN",
    "ex": "AMEX",
-   "u": "",
+   "u": "GDX",
    "un": "Gold Miners (GDX)",
    "kind": "Sector",
    "sec": "Basic Materials",
@@ -828,7 +872,9 @@
    "av": 2210923,
    "adv": 180462935,
    "adr": 9.83,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "TECL",
@@ -838,7 +884,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLK",
    "un": "Technology Sector (XLK)",
    "kind": "Sector",
    "sec": "Technology",
@@ -851,18 +897,20 @@
    "av": 1053705,
    "adv": 171343146,
    "adr": 7.97,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "UVIX",
    "n": "2x Long VIX Futures ETF",
-   "iss": "Other",
+   "iss": "Volatility Shares",
    "dir": "Long",
    "lev": 2,
    "type": "ETF",
    "ex": "CBOE",
-   "u": "",
-   "un": "VIX Futures",
+   "u": "VIX",
+   "un": "VIX Futures (VIX)",
    "kind": "Volatility",
    "sec": "Volatility",
    "ind": "VIX Futures",
@@ -874,7 +922,9 @@
    "av": 4019804,
    "adv": 166111616,
    "adr": 14.25,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SVXY",
@@ -884,8 +934,8 @@
    "lev": 0.5,
    "type": "ETF",
    "ex": "CBOE",
-   "u": "",
-   "un": "VIX Futures",
+   "u": "VIX",
+   "un": "VIX Futures (VIX)",
    "kind": "Volatility",
    "sec": "Volatility",
    "ind": "VIX Futures",
@@ -897,7 +947,9 @@
    "av": 2680935,
    "adv": 162303441,
    "adr": 3.57,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "PLTD",
@@ -932,7 +984,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "DIA",
    "un": "Dow Jones Industrial Average (DIA)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -945,7 +997,9 @@
    "av": 2156530,
    "adv": 144725839,
    "adr": 3.39,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SSPC",
@@ -980,7 +1034,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "TLT",
    "un": "20+ Year Treasuries (TLT)",
    "kind": "Bonds",
    "sec": "Fixed Income",
@@ -993,7 +1047,9 @@
    "av": 4803488,
    "adv": 140421568,
    "adr": 2.42,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "AMZD",
@@ -1048,13 +1104,13 @@
   {
    "t": "SVIX",
    "n": "-1x Short VIX Futures ETF",
-   "iss": "-1x",
+   "iss": "Volatility Shares",
    "dir": "Inverse",
    "lev": 1,
    "type": "ETF",
    "ex": "CBOE",
-   "u": "",
-   "un": "VIX Futures",
+   "u": "VIX",
+   "un": "VIX Futures (VIX)",
    "kind": "Volatility",
    "sec": "Volatility",
    "ind": "VIX Futures",
@@ -1066,7 +1122,9 @@
    "av": 5400139,
    "adv": 130651629,
    "adr": 7.5,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "RAM",
@@ -1126,7 +1184,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "DIA",
    "un": "Dow Jones Industrial Average (DIA)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -1139,7 +1197,9 @@
    "av": 4962170,
    "adv": 119960593,
    "adr": 3.35,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "INTW",
@@ -1272,7 +1332,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "GDX",
    "un": "Gold Miners (GDX)",
    "kind": "Sector",
    "sec": "Basic Materials",
@@ -1285,7 +1345,9 @@
    "av": 772835,
    "adv": 101207206,
    "adr": 6.18,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "MSFU",
@@ -1468,7 +1530,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "DIA",
    "un": "Dow Jones Industrial Average (DIA)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -1481,7 +1543,9 @@
    "av": 5226786,
    "adv": 90429372,
    "adr": 2.21,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "AAOX",
@@ -1616,7 +1680,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XBI",
    "un": "Biotech Index (XBI)",
    "kind": "Sector",
    "sec": "Healthcare",
@@ -1629,7 +1693,9 @@
    "av": 357663,
    "adv": 82796579,
    "adr": 10.03,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SNDU",
@@ -1737,7 +1803,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "TLT",
    "un": "20+ Year Treasuries (TLT)",
    "kind": "Bonds",
    "sec": "Fixed Income",
@@ -1750,7 +1816,9 @@
    "av": 1711063,
    "adv": 74385698,
    "adr": 2.43,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "USD",
@@ -1760,7 +1828,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "SOXX",
    "un": "Semiconductor Index (SOXX)",
    "kind": "Sector",
    "sec": "Technology",
@@ -1773,7 +1841,9 @@
    "av": 1125715,
    "adv": 72334121,
    "adr": 7.66,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "AMZU",
@@ -1931,7 +2001,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLF",
    "un": "Financial Sector (XLF)",
    "kind": "Sector",
    "sec": "Financial Services",
@@ -1944,7 +2014,9 @@
    "av": 370750,
    "adv": 62864607,
    "adr": 4.28,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "CONL",
@@ -1979,7 +2051,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XHB",
    "un": "Homebuilders (XHB)",
    "kind": "Sector",
    "sec": "Consumer Cyclical",
@@ -1992,7 +2064,9 @@
    "av": 1788150,
    "adv": 59908418,
    "adr": 9.13,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "FAZ",
@@ -2002,7 +2076,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLF",
    "un": "Financial Sector (XLF)",
    "kind": "Sector",
    "sec": "Financial Services",
@@ -2015,7 +2089,9 @@
    "av": 1636244,
    "adv": 53323043,
    "adr": 4.32,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SMCX",
@@ -2075,7 +2151,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLE",
    "un": "Energy Sector (XLE)",
    "kind": "Sector",
    "sec": "Energy",
@@ -2088,7 +2164,9 @@
    "av": 446995,
    "adv": 51644143,
    "adr": 4.8,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SKUU",
@@ -2123,7 +2201,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "IWM",
    "un": "Russell 2000 (IWM)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -2136,7 +2214,9 @@
    "av": 1905949,
    "adv": 50965315,
    "adr": 4.71,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SBIT",
@@ -2244,7 +2324,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XOP",
    "un": "Oil & Gas E&P (XOP)",
    "kind": "Sector",
    "sec": "Energy",
@@ -2257,7 +2337,9 @@
    "av": 1398698,
    "adv": 45913339,
    "adr": 5.81,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SNDG",
@@ -2388,7 +2470,7 @@
    "lev": 3,
    "type": "ETN",
    "ex": "AMEX",
-   "u": "",
+   "u": "GDX",
    "un": "Gold Miners (GDX)",
    "kind": "Sector",
    "sec": "Basic Materials",
@@ -2401,7 +2483,9 @@
    "av": 1726135,
    "adv": 40976081,
    "adr": 9.68,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "BITU",
@@ -2434,7 +2518,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "GDXJ",
    "un": "Junior Gold Miners (GDXJ)",
    "kind": "Sector",
    "sec": "Basic Materials",
@@ -2447,7 +2531,9 @@
    "av": 322583,
    "adv": 38045575,
    "adr": 6.93,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "TSMX",
@@ -2532,7 +2618,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "GDX",
    "un": "Gold Miners (GDX)",
    "kind": "Sector",
    "sec": "Basic Materials",
@@ -2545,7 +2631,9 @@
    "av": 852244,
    "adv": 35296658,
    "adr": 6.13,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SKHX",
@@ -2575,12 +2663,12 @@
   {
    "t": "SPYU",
    "n": "MAX S&P 500 4x Leveraged ETN",
-   "iss": "MAX",
+   "iss": "Other",
    "dir": "Long",
    "lev": 4,
    "type": "ETN",
    "ex": "AMEX",
-   "u": "",
+   "u": "SPY",
    "un": "S&P 500 (SPY)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -2593,7 +2681,9 @@
    "av": 1092882,
    "adv": 34138061,
    "adr": 4.84,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "PLTZ",
@@ -2653,7 +2743,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "IWM",
    "un": "Russell 2000 (IWM)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -2666,7 +2756,9 @@
    "av": 509996,
    "adv": 33446609,
    "adr": 4.74,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "TSLZ",
@@ -2751,7 +2843,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLK",
    "un": "Technology Sector (XLK)",
    "kind": "Sector",
    "sec": "Technology",
@@ -2764,7 +2856,9 @@
    "av": 467993,
    "adv": 32094577,
    "adr": 7.43,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "IREZ",
@@ -2949,7 +3043,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "IWM",
    "un": "Russell 2000 (IWM)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -2962,7 +3056,9 @@
    "av": 1143460,
    "adv": 27639045,
    "adr": 3.1,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "TSLT",
@@ -3022,7 +3118,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "KRE",
    "un": "Regional Banks (KRE)",
    "kind": "Sector",
    "sec": "Financial Services",
@@ -3035,7 +3131,9 @@
    "av": 224146,
    "adv": 27128980,
    "adr": 5.54,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "WDCX",
@@ -3095,7 +3193,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "IWM",
    "un": "Russell 2000 (IWM)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -3108,7 +3206,9 @@
    "av": 462903,
    "adv": 26037279,
    "adr": 3.09,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "LITZ",
@@ -3237,7 +3337,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XOP",
    "un": "Oil & Gas E&P (XOP)",
    "kind": "Sector",
    "sec": "Energy",
@@ -3250,7 +3350,9 @@
    "av": 509760,
    "adv": 23047776,
    "adr": 5.93,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "MSFD",
@@ -3285,7 +3387,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "GDXJ",
    "un": "Junior Gold Miners (GDXJ)",
    "kind": "Sector",
    "sec": "Basic Materials",
@@ -3298,7 +3400,9 @@
    "av": 788019,
    "adv": 22413152,
    "adr": 6.91,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "DDM",
@@ -3308,7 +3412,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "DIA",
    "un": "Dow Jones Industrial Average (DIA)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -3321,7 +3425,9 @@
    "av": 347630,
    "adv": 22291190,
    "adr": 2.16,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "NFXL",
@@ -3627,7 +3733,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "SOXX",
    "un": "Semiconductor Index (SOXX)",
    "kind": "Sector",
    "sec": "Technology",
@@ -3640,7 +3746,9 @@
    "av": 420436,
    "adv": 17817090,
    "adr": 7.41,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SPCG",
@@ -3668,7 +3776,7 @@
   {
    "t": "DUSB",
    "n": "Dimensional Ultrashort Fixed Income ETF",
-   "iss": "Dimensional",
+   "iss": "Other",
    "dir": "Inverse",
    "lev": 2,
    "type": "ETF",
@@ -3886,7 +3994,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "SOXX",
    "un": "Semiconductor Index (SOXX)",
    "kind": "Sector",
    "sec": "Technology",
@@ -3899,7 +4007,9 @@
    "av": 1088550,
    "adv": 15479597,
    "adr": 7.31,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "ETHT",
@@ -3982,11 +4092,11 @@
    "lev": 2,
    "type": "ETF",
    "ex": "NASDAQ",
-   "u": "",
-   "un": "Innovation",
-   "kind": "Sector",
-   "sec": "Technology",
-   "ind": "Innovation",
+   "u": "QQQ",
+   "un": "Nasdaq-100 (QQQ)",
+   "kind": "Index",
+   "sec": "Broad Market",
+   "ind": "Large-Cap Growth",
    "er": null,
    "aum": null,
    "inc": "",
@@ -3995,7 +4105,9 @@
    "av": 70380,
    "adv": 14506981,
    "adr": 3.06,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "UNHG",
@@ -4203,7 +4315,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLRE",
    "un": "Real Estate Sector (XLRE)",
    "kind": "Sector",
    "sec": "Real Estate",
@@ -4216,7 +4328,9 @@
    "av": 1352476,
    "adv": 13190796,
    "adr": 4.31,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SOFX",
@@ -4251,7 +4365,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLV",
    "un": "Health Care Sector (XLV)",
    "kind": "Sector",
    "sec": "Healthcare",
@@ -4264,7 +4378,9 @@
    "av": 73025,
    "adv": 12056137,
    "adr": 4.88,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "BABX",
@@ -4349,7 +4465,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "TLT",
    "un": "20+ Year Treasuries (TLT)",
    "kind": "Bonds",
    "sec": "Fixed Income",
@@ -4362,7 +4478,9 @@
    "av": 294584,
    "adv": 11489540,
    "adr": 1.64,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "LINT",
@@ -4647,7 +4765,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLK",
    "un": "Technology Sector (XLK)",
    "kind": "Sector",
    "sec": "Technology",
@@ -4660,7 +4778,9 @@
    "av": 70646,
    "adv": 8965532,
    "adr": 4.85,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "IONL",
@@ -4695,7 +4815,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "SPY",
    "un": "S&P 500 (SPY)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -4708,7 +4828,9 @@
    "av": 41681,
    "adv": 8875084,
    "adr": 2.1,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "ARMG",
@@ -4941,7 +5063,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLU",
    "un": "Utilities Sector (XLU)",
    "kind": "Sector",
    "sec": "Utilities",
@@ -4954,7 +5076,9 @@
    "av": 197699,
    "adv": 7275515,
    "adr": 3.89,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "HOOG",
@@ -5014,7 +5138,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLE",
    "un": "Energy Sector (XLE)",
    "kind": "Sector",
    "sec": "Energy",
@@ -5027,7 +5151,9 @@
    "av": 524948,
    "adv": 7111373,
    "adr": 4.7,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "ONDL",
@@ -5110,7 +5236,7 @@
    "lev": 1,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "TLT",
    "un": "20+ Year Treasuries (TLT)",
    "kind": "Bonds",
    "sec": "Fixed Income",
@@ -5123,7 +5249,9 @@
    "av": 268004,
    "adv": 6868507,
    "adr": 0.86,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "QCML",
@@ -5333,7 +5461,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "SPY",
    "un": "S&P 500 (SPY)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -5346,7 +5474,9 @@
    "av": 81124,
    "adv": 6079779,
    "adr": 9.13,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "METQ",
@@ -5556,7 +5686,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "SPY",
    "un": "S&P 500 (SPY)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -5569,7 +5699,9 @@
    "av": 226576,
    "adv": 4984398,
    "adr": 8.8,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "LRCU",
@@ -5828,10 +5960,10 @@
    "type": "ETF",
    "ex": "NASDAQ",
    "u": "",
-   "un": "VIX Futures",
-   "kind": "Volatility",
-   "sec": "Volatility",
-   "ind": "VIX Futures",
+   "un": "XRP",
+   "kind": "Crypto",
+   "sec": "Crypto",
+   "ind": "XRP",
    "er": null,
    "aum": null,
    "inc": "",
@@ -6119,7 +6251,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLE",
    "un": "Energy Sector (XLE)",
    "kind": "Sector",
    "sec": "Energy",
@@ -6132,7 +6264,9 @@
    "av": 51482,
    "adv": 3765062,
    "adr": 4.56,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SARK",
@@ -6165,7 +6299,7 @@
    "lev": 3,
    "type": "ETN",
    "ex": "AMEX",
-   "u": "",
+   "u": "USO",
    "un": "Crude Oil (USO)",
    "kind": "Commodity",
    "sec": "Commodities",
@@ -6178,7 +6312,9 @@
    "av": 60543,
    "adv": 3688810,
    "adr": 8.02,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "QBTZ",
@@ -6336,7 +6472,7 @@
    "lev": 3,
    "type": "ETN",
    "ex": "AMEX",
-   "u": "",
+   "u": "XOP",
    "un": "Oil & Gas E&P (XOP)",
    "kind": "Sector",
    "sec": "Energy",
@@ -6349,7 +6485,9 @@
    "av": 53879,
    "adv": 2979360,
    "adr": 7.28,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "NVTX",
@@ -6409,7 +6547,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "SPY",
    "un": "S&P 500 (SPY)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -6422,7 +6560,9 @@
    "av": 58223,
    "adv": 2948868,
    "adr": 2.19,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "VSTL",
@@ -6530,7 +6670,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "DIA",
    "un": "Dow Jones Industrial Average (DIA)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -6543,7 +6683,9 @@
    "av": 119483,
    "adv": 2720636,
    "adr": 6.07,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "STXU",
@@ -6578,7 +6720,7 @@
    "lev": 3,
    "type": "ETN",
    "ex": "AMEX",
-   "u": "",
+   "u": "XOP",
    "un": "Oil & Gas E&P (XOP)",
    "kind": "Sector",
    "sec": "Energy",
@@ -6591,7 +6733,9 @@
    "av": 104530,
    "adv": 2580499,
    "adr": 7.07,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "DRV",
@@ -6601,7 +6745,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLRE",
    "un": "Real Estate Sector (XLRE)",
    "kind": "Sector",
    "sec": "Real Estate",
@@ -6614,7 +6758,9 @@
    "av": 132771,
    "adv": 2562369,
    "adr": 4.09,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "MRAL",
@@ -7047,7 +7193,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "SLV",
    "un": "Silver (SLV)",
    "kind": "Commodity",
    "sec": "Commodities",
@@ -7060,7 +7206,9 @@
    "av": 196084,
    "adv": 1961252,
    "adr": 3.61,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "COHQ",
@@ -7293,7 +7441,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "MDY",
    "un": "S&P MidCap 400 (MDY)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -7306,7 +7454,9 @@
    "av": 27175,
    "adv": 1679197,
    "adr": 3.64,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "QPUX",
@@ -7562,7 +7712,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLF",
    "un": "Financial Sector (XLF)",
    "kind": "Sector",
    "sec": "Financial Services",
@@ -7575,12 +7725,14 @@
    "av": 15512,
    "adv": 1493375,
    "adr": 2.22,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "QBER",
    "n": "TrueShares Quarterly Bear Hedge ETF",
-   "iss": "TrueShares",
+   "iss": "Other",
    "dir": "Inverse",
    "lev": 1,
    "type": "ETF",
@@ -7872,7 +8024,7 @@
   {
    "t": "HDGE",
    "n": "AdvisorShares Active Bear ETF",
-   "iss": "AdvisorShares",
+   "iss": "Other",
    "dir": "Inverse",
    "lev": 1,
    "type": "ETF",
@@ -8221,7 +8373,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "TLT",
    "un": "20+ Year Treasuries (TLT)",
    "kind": "Bonds",
    "sec": "Fixed Income",
@@ -8234,7 +8386,9 @@
    "av": 81120,
    "adv": 1175255,
    "adr": 1.54,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "ASMG",
@@ -8269,7 +8423,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLI",
    "un": "Industrials Sector (XLI)",
    "kind": "Sector",
    "sec": "Industrials",
@@ -8282,7 +8436,9 @@
    "av": 15706,
    "adv": 1159178,
    "adr": 4.08,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "PILL",
@@ -8340,7 +8496,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "NASDAQ",
-   "u": "",
+   "u": "XBI",
    "un": "Biotech Index (XBI)",
    "kind": "Sector",
    "sec": "Healthcare",
@@ -8353,7 +8509,9 @@
    "av": 9400,
    "adv": 1093549,
    "adr": 3.83,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "GLXU",
@@ -8803,7 +8961,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "CBOE",
-   "u": "",
+   "u": "SOXX",
    "un": "Semiconductor Index (SOXX)",
    "kind": "Sector",
    "sec": "Technology",
@@ -8816,7 +8974,9 @@
    "av": 56748,
    "adv": 930108,
    "adr": 10.14,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "GEVG",
@@ -8876,7 +9036,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLV",
    "un": "Health Care Sector (XLV)",
    "kind": "Sector",
    "sec": "Healthcare",
@@ -8889,7 +9049,9 @@
    "av": 13049,
    "adv": 905022,
    "adr": 2.64,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "FIGG",
@@ -9170,7 +9332,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLF",
    "un": "Financial Sector (XLF)",
    "kind": "Sector",
    "sec": "Financial Services",
@@ -9183,7 +9345,9 @@
    "av": 35149,
    "adv": 805182,
    "adr": 2.3,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "CRMX",
@@ -9312,7 +9476,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "TLT",
    "un": "20+ Year Treasuries (TLT)",
    "kind": "Bonds",
    "sec": "Fixed Income",
@@ -9325,7 +9489,9 @@
    "av": 9140,
    "adv": 706042,
    "adr": 1.62,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "METG",
@@ -9383,7 +9549,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "DIA",
    "un": "Dow Jones Industrial Average (DIA)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -9396,7 +9562,9 @@
    "av": 42203,
    "adv": 701582,
    "adr": 5.54,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "UUUG",
@@ -9902,7 +10070,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLRE",
    "un": "Real Estate Sector (XLRE)",
    "kind": "Sector",
    "sec": "Real Estate",
@@ -9915,7 +10083,9 @@
    "av": 13675,
    "adv": 571597,
    "adr": 2.41,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "REW",
@@ -9925,7 +10095,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLK",
    "un": "Technology Sector (XLK)",
    "kind": "Sector",
    "sec": "Technology",
@@ -9938,7 +10108,9 @@
    "av": 46392,
    "adv": 570021,
    "adr": 4.55,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "JOBX",
@@ -9973,7 +10145,7 @@
    "lev": 1,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLF",
    "un": "Financial Sector (XLF)",
    "kind": "Sector",
    "sec": "Financial Services",
@@ -9986,7 +10158,9 @@
    "av": 18217,
    "adv": 544341,
    "adr": 1.01,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SPCL",
@@ -10119,7 +10293,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "NASDAQ",
-   "u": "",
+   "u": "KRE",
    "un": "Regional Banks (KRE)",
    "kind": "Sector",
    "sec": "Financial Services",
@@ -10132,7 +10306,9 @@
    "av": 78426,
    "adv": 511457,
    "adr": 3.43,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "WTIU",
@@ -10142,7 +10318,7 @@
    "lev": 3,
    "type": "ETN",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLE",
    "un": "Energy Sector (XLE)",
    "kind": "Sector",
    "sec": "Energy",
@@ -10155,7 +10331,9 @@
    "av": 18830,
    "adv": 498462,
    "adr": 6.87,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "EURL",
@@ -10211,7 +10389,7 @@
    "lev": 3,
    "type": "ETN",
    "ex": "AMEX",
-   "u": "",
+   "u": "USO",
    "un": "Crude Oil (USO)",
    "kind": "Commodity",
    "sec": "Commodities",
@@ -10224,7 +10402,9 @@
    "av": 45183,
    "adv": 488439,
    "adr": 7.59,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "PYPG",
@@ -10309,7 +10489,7 @@
    "lev": 1,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLRE",
    "un": "Real Estate Sector (XLRE)",
    "kind": "Sector",
    "sec": "Real Estate",
@@ -10322,7 +10502,9 @@
    "av": 28697,
    "adv": 456496,
    "adr": 1.12,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "UMAL",
@@ -10678,7 +10860,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "MDY",
    "un": "S&P MidCap 400 (MDY)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -10691,7 +10873,9 @@
    "av": 4880,
    "adv": 398508,
    "adr": 1.93,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "BEC",
@@ -10893,7 +11077,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "SOXX",
    "un": "Semiconductor Index (SOXX)",
    "kind": "Sector",
    "sec": "Technology",
@@ -10906,7 +11090,9 @@
    "av": 57884,
    "adv": 365062,
    "adr": 6.65,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "UBOT",
@@ -11327,7 +11513,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "CBOE",
-   "u": "",
+   "u": "SOXX",
    "un": "Semiconductor Index (SOXX)",
    "kind": "Sector",
    "sec": "Technology",
@@ -11340,7 +11526,9 @@
    "av": 32414,
    "adv": 288680,
    "adr": 8.4,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "UPW",
@@ -11350,7 +11538,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLU",
    "un": "Utilities Sector (XLU)",
    "kind": "Sector",
    "sec": "Utilities",
@@ -11363,7 +11551,9 @@
    "av": 13330,
    "adv": 279840,
    "adr": 2.11,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "DJTU",
@@ -11398,7 +11588,7 @@
    "lev": 3,
    "type": "ETN",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLE",
    "un": "Energy Sector (XLE)",
    "kind": "Sector",
    "sec": "Energy",
@@ -11411,7 +11601,9 @@
    "av": 117895,
    "adv": 275930,
    "adr": 7.24,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "ETU",
@@ -11444,7 +11636,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLV",
    "un": "Health Care Sector (XLV)",
    "kind": "Sector",
    "sec": "Healthcare",
@@ -11457,7 +11649,9 @@
    "av": 22217,
    "adv": 272287,
    "adr": 3.08,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "ONTX",
@@ -11492,11 +11686,11 @@
    "lev": 2,
    "type": "ETF",
    "ex": "NASDAQ",
-   "u": "",
-   "un": "Innovation",
-   "kind": "Sector",
-   "sec": "Technology",
-   "ind": "Innovation",
+   "u": "QQQ",
+   "un": "Nasdaq-100 (QQQ)",
+   "kind": "Index",
+   "sec": "Broad Market",
+   "ind": "Large-Cap Growth",
    "er": null,
    "aum": null,
    "inc": "",
@@ -11505,7 +11699,9 @@
    "av": 1393,
    "adv": 271549,
    "adr": 1.58,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "MPWX",
@@ -11611,7 +11807,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "MDY",
    "un": "S&P MidCap 400 (MDY)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -11624,7 +11820,9 @@
    "av": 8690,
    "adv": 268644,
    "adr": 3.04,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "NIOG",
@@ -11755,7 +11953,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLK",
    "un": "Technology Sector (XLK)",
    "kind": "Sector",
    "sec": "Technology",
@@ -11768,7 +11966,9 @@
    "av": 8245,
    "adv": 251640,
    "adr": 3.81,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SNAG",
@@ -11869,7 +12069,7 @@
   {
    "t": "ZMUN",
    "n": "The RBB Fund, Inc. F/m Ultrashort Tax-Free Municipal ETF",
-   "iss": "The",
+   "iss": "Other",
    "dir": "Inverse",
    "lev": 2,
    "type": "ETF",
@@ -11967,7 +12167,7 @@
   {
    "t": "JETD",
    "n": "MAX Airlines -3x Inverse Leveraged ETN",
-   "iss": "MAX",
+   "iss": "Other",
    "dir": "Inverse",
    "lev": 3,
    "type": "ETN",
@@ -12091,7 +12291,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLK",
    "un": "Technology Sector (XLK)",
    "kind": "Sector",
    "sec": "Technology",
@@ -12104,7 +12304,9 @@
    "av": 15631,
    "adv": 215603,
    "adr": 2.77,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "AAPE",
@@ -12139,7 +12341,7 @@
    "lev": 1,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "MDY",
    "un": "S&P MidCap 400 (MDY)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -12152,7 +12354,9 @@
    "av": 13207,
    "adv": 209900,
    "adr": 0.74,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "CRWC",
@@ -12235,7 +12439,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "CBOE",
-   "u": "",
+   "u": "XLV",
    "un": "Health Care Sector (XLV)",
    "kind": "Sector",
    "sec": "Healthcare",
@@ -12248,7 +12452,9 @@
    "av": 5471,
    "adv": 203468,
    "adr": 2.16,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "TXXD",
@@ -12372,7 +12578,7 @@
   {
    "t": "JETU",
    "n": "MAX Airlines 3x Leveraged ETN",
-   "iss": "MAX",
+   "iss": "Other",
    "dir": "Long",
    "lev": 3,
    "type": "ETN",
@@ -12473,7 +12679,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "NASDAQ",
-   "u": "",
+   "u": "QQQ",
    "un": "Nasdaq-100 (QQQ)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -12486,7 +12692,9 @@
    "av": 2916,
    "adv": 172015,
    "adr": 1.79,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "CHNU",
@@ -12542,7 +12750,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLU",
    "un": "Utilities Sector (XLU)",
    "kind": "Sector",
    "sec": "Utilities",
@@ -12555,7 +12763,9 @@
    "av": 7173,
    "adv": 166994,
    "adr": 1.6,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SIJ",
@@ -12565,7 +12775,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLI",
    "un": "Industrials Sector (XLI)",
    "kind": "Sector",
    "sec": "Industrials",
@@ -12578,7 +12788,9 @@
    "av": 8729,
    "adv": 165129,
    "adr": 2.31,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "EEV",
@@ -12730,7 +12942,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLRE",
    "un": "Real Estate Sector (XLRE)",
    "kind": "Sector",
    "sec": "Real Estate",
@@ -12743,7 +12955,9 @@
    "av": 2208,
    "adv": 146348,
    "adr": 1.31,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "CSCS",
@@ -12803,7 +13017,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "NASDAQ",
-   "u": "",
+   "u": "SPY",
    "un": "S&P 500 (SPY)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -12816,7 +13030,9 @@
    "av": 733,
    "adv": 137467,
    "adr": 0.48,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SMHD",
@@ -12826,7 +13042,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "CBOE",
-   "u": "",
+   "u": "SOXX",
    "un": "Semiconductor Index (SOXX)",
    "kind": "Sector",
    "sec": "Technology",
@@ -12839,7 +13055,9 @@
    "av": 3003,
    "adv": 137452,
    "adr": 5.21,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "UXI",
@@ -12849,7 +13067,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLI",
    "un": "Industrials Sector (XLI)",
    "kind": "Sector",
    "sec": "Industrials",
@@ -12862,7 +13080,9 @@
    "av": 2638,
    "adv": 134451,
    "adr": 2.35,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "TEXU",
@@ -12872,7 +13092,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLE",
    "un": "Energy Sector (XLE)",
    "kind": "Sector",
    "sec": "Energy",
@@ -12885,7 +13105,9 @@
    "av": 2998,
    "adv": 133208,
    "adr": 3.47,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "VIAG",
@@ -12920,7 +13142,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "NASDAQ",
-   "u": "",
+   "u": "XBI",
    "un": "Biotech Index (XBI)",
    "kind": "Sector",
    "sec": "Healthcare",
@@ -12933,7 +13155,9 @@
    "av": 12011,
    "adv": 129319,
    "adr": 4.31,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "EZJ",
@@ -12966,7 +13190,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "NASDAQ",
-   "u": "",
+   "u": "QQQ",
    "un": "Nasdaq-100 (QQQ)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -12979,7 +13203,9 @@
    "av": 2548,
    "adv": 125178,
    "adr": 1.9,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "APHU",
@@ -13231,7 +13457,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "NASDAQ",
-   "u": "",
+   "u": "QQQ",
    "un": "Nasdaq-100 (QQQ)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -13244,7 +13470,9 @@
    "av": 2901,
    "adv": 110121,
    "adr": 2.18,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "CXRN",
@@ -13665,7 +13893,7 @@
    "lev": 3,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "MDY",
    "un": "S&P MidCap 400 (MDY)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -13678,7 +13906,9 @@
    "av": 10005,
    "adv": 86019,
    "adr": 2.57,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "LITC",
@@ -13788,7 +14018,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "CBOE",
-   "u": "",
+   "u": "XBI",
    "un": "Biotech Index (XBI)",
    "kind": "Sector",
    "sec": "Healthcare",
@@ -13801,7 +14031,9 @@
    "av": 2342,
    "adv": 77742,
    "adr": 2.22,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SZK",
@@ -13829,13 +14061,13 @@
   {
    "t": "VYLD",
    "n": "Inverse VIX Short-Term Futures ETNs due March 22, 2045",
-   "iss": "Inverse",
+   "iss": "Other",
    "dir": "Inverse",
    "lev": 1,
    "type": "ETN",
    "ex": "AMEX",
-   "u": "",
-   "un": "VIX Futures",
+   "u": "VIX",
+   "un": "VIX Futures (VIX)",
    "kind": "Volatility",
    "sec": "Volatility",
    "ind": "VIX Futures",
@@ -13847,7 +14079,9 @@
    "av": 2507,
    "adv": 76694,
    "adr": 0.82,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "XPP",
@@ -13880,7 +14114,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "XBI",
    "un": "Biotech Index (XBI)",
    "kind": "Sector",
    "sec": "Healthcare",
@@ -13893,7 +14127,9 @@
    "av": 1626,
    "adv": 74928,
    "adr": 1.63,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "ORAC",
@@ -13974,7 +14210,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "CBOE",
-   "u": "",
+   "u": "XLE",
    "un": "Energy Sector (XLE)",
    "kind": "Sector",
    "sec": "Energy",
@@ -13987,7 +14223,9 @@
    "av": 2078,
    "adv": 65412,
    "adr": 2.95,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "COHC",
@@ -14118,7 +14356,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "CBOE",
-   "u": "",
+   "u": "SOXX",
    "un": "Semiconductor Index (SOXX)",
    "kind": "Sector",
    "sec": "Technology",
@@ -14131,7 +14369,9 @@
    "av": 3970,
    "adv": 55317,
    "adr": 3.82,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "XKRE",
@@ -14141,7 +14381,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "CBOE",
-   "u": "",
+   "u": "KRE",
    "un": "Regional Banks (KRE)",
    "kind": "Sector",
    "sec": "Financial Services",
@@ -14154,7 +14394,9 @@
    "av": 2105,
    "adv": 54076,
    "adr": 0.5,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "AIQD",
@@ -14641,7 +14883,7 @@
   {
    "t": "BDCX",
    "n": "ETRACS Quarterly Pay 1.5x Leveraged MarketVector BDC Liquid Index ETN due June 10, 2050",
-   "iss": "ETRACS",
+   "iss": "Other",
    "dir": "Long",
    "lev": 1.5,
    "type": "ETN",
@@ -14671,7 +14913,7 @@
    "lev": 1,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "IWM",
    "un": "Russell 2000 (IWM)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -14684,7 +14926,9 @@
    "av": 1681,
    "adv": 39571,
    "adr": 0.73,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "PLTL",
@@ -14931,12 +15175,12 @@
   {
    "t": "MVRL",
    "n": "ETRACS Monthly Pay 1.5X Leveraged Mortgage REIT ETN",
-   "iss": "ETRACS",
+   "iss": "Other",
    "dir": "Long",
    "lev": 1.5,
    "type": "ETN",
    "ex": "AMEX",
-   "u": "",
+   "u": "XLRE",
    "un": "Real Estate Sector (XLRE)",
    "kind": "Sector",
    "sec": "Real Estate",
@@ -14949,7 +15193,9 @@
    "av": 3594,
    "adv": 31556,
    "adr": 3.53,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "XLUX",
@@ -14959,7 +15205,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "CBOE",
-   "u": "",
+   "u": "XLU",
    "un": "Utilities Sector (XLU)",
    "kind": "Sector",
    "sec": "Utilities",
@@ -14972,7 +15218,9 @@
    "av": 1328,
    "adv": 31137,
    "adr": 1.17,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "SOFC",
@@ -15032,7 +15280,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "NASDAQ",
-   "u": "",
+   "u": "QQQ",
    "un": "Nasdaq-100 (QQQ)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -15045,12 +15293,14 @@
    "av": 1353,
    "adv": 29554,
    "adr": 0.99,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "CARD",
    "n": "MAX Auto Industry -3x Inverse Leveraged ETN",
-   "iss": "MAX",
+   "iss": "Other",
    "dir": "Inverse",
    "lev": 3,
    "type": "ETN",
@@ -15146,7 +15396,7 @@
   {
    "t": "MLPR",
    "n": "ETRACS Quarterly Pay 1.5X Leveraged Alerian MLP Index ETN",
-   "iss": "ETRACS",
+   "iss": "Other",
    "dir": "Long",
    "lev": 1.5,
    "type": "ETN",
@@ -15399,7 +15649,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "MDY",
    "un": "S&P MidCap 400 (MDY)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -15412,12 +15662,14 @@
    "av": 3649,
    "adv": 23532,
    "adr": 1.17,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "CEFD",
    "n": "ETRACS Monthly Pay 1.5X Leveraged Closed-End Fund Index ETN",
-   "iss": "ETRACS",
+   "iss": "Other",
    "dir": "Long",
    "lev": 1.5,
    "type": "ETN",
@@ -15445,7 +15697,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "CBOE",
-   "u": "",
+   "u": "XLK",
    "un": "Technology Sector (XLK)",
    "kind": "Sector",
    "sec": "Technology",
@@ -15458,7 +15710,9 @@
    "av": 1170,
    "adv": 22427,
    "adr": 2.18,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "XLPD",
@@ -15755,7 +16009,7 @@
   {
    "t": "CARU",
    "n": "MAX Auto Industry 3x Leveraged ETN",
-   "iss": "MAX",
+   "iss": "Other",
    "dir": "Long",
    "lev": 3,
    "type": "ETN",
@@ -16075,7 +16329,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "AMEX",
-   "u": "",
+   "u": "IWM",
    "un": "Russell 2000 (IWM)",
    "kind": "Index",
    "sec": "Broad Market",
@@ -16088,7 +16342,9 @@
    "av": 1304,
    "adv": 11738,
    "adr": 1.26,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "RGTC",
@@ -16198,7 +16454,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "CBOE",
-   "u": "",
+   "u": "XLF",
    "un": "Financial Sector (XLF)",
    "kind": "Sector",
    "sec": "Financial Services",
@@ -16211,7 +16467,9 @@
    "av": 320,
    "adv": 9518,
    "adr": 0.63,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "TDCL",
@@ -16857,7 +17115,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "CBOE",
-   "u": "",
+   "u": "XLI",
    "un": "Industrials Sector (XLI)",
    "kind": "Sector",
    "sec": "Industrials",
@@ -16870,7 +17128,9 @@
    "av": 157,
    "adv": 3477,
    "adr": 0.14,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "XAGI",
@@ -17145,7 +17405,7 @@
    "lev": 2,
    "type": "ETF",
    "ex": "CBOE",
-   "u": "",
+   "u": "XLRE",
    "un": "Real Estate Sector (XLRE)",
    "kind": "Sector",
    "sec": "Real Estate",
@@ -17158,7 +17418,9 @@
    "av": 64,
    "adv": 1592,
    "adr": 0.07,
-   "nd": 20
+   "nd": 20,
+   "uadr": null,
+   "uadv": null
   },
   {
    "t": "COIX",

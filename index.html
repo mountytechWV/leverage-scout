@@ -98,6 +98,12 @@
   #saveDef.saved{color:var(--accent);border-color:var(--accent)}
   .linkish{background:none;border:0;color:var(--muted);text-decoration:underline;padding:7px 4px}
   .linkish:hover{color:var(--text)}
+  #showHidden{background:var(--accent);color:#111;border-color:var(--accent);font-weight:700;
+    font-size:14px;padding:10px 18px;border-radius:10px;box-shadow:0 0 0 0 rgba(245,184,61,.6);
+    animation:pulse 1.6s ease-out 3}
+  #showHidden:hover{filter:brightness(1.08)}
+  #emptyMsg.warn{color:var(--accent);font-weight:600}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(245,184,61,.6)}100%{box-shadow:0 0 0 14px rgba(245,184,61,0)}}
   .empty{padding:40px;text-align:center;color:var(--muted)}
   .note{color:var(--muted);font-size:12px;margin-top:14px}
   mark{background:rgba(245,184,61,.25);color:inherit;border-radius:3px}
@@ -343,6 +349,21 @@
     return {rows, terms};
   }
 
+  function activeFilters(){
+    const f = [];
+    if (state.dt) f.push("Day Trade is on");
+    if (state.fav) f.push("Favorites only");
+    if (state.kind) f.push(`Type: ${state.kind}`);
+    if (state.dir) f.push(`Direction: ${state.dir}`);
+    if (state.levs.length) f.push(`Leverage: ${state.levs.map(v => v + "x").join("/")}`);
+    if (state.sec) f.push(`Sector: ${state.sec}`);
+    if (state.ind) f.push(`Industry: ${state.ind}`);
+    if (state.iss) f.push(`Issuer: ${state.iss}`);
+    if (state.mv) f.push("Min volume");
+    if (state.madr) f.push("Min ADR");
+    return f;
+  }
+
   // ---------- render ----------
   function cell(r, c, terms){
     switch (c.k){
@@ -390,10 +411,11 @@
     $("emptyMsg").textContent = state.fav && !favs.size
       ? "No favorites yet. Click the \u2606 next to any fund to add it."
       : hiddenCount
-        ? `${hiddenCount} fund${hiddenCount > 1 ? "s" : ""} match "${state.q.trim()}" but your filters are hiding ${hiddenCount > 1 ? "them" : "it"}` +
-          (state.kind ? ` (Type is set to ${state.kind}).` : ".")
+        ? `${hiddenCount} fund${hiddenCount > 1 ? "s match" : " matches"} "${state.q.trim()}" but your filters are hiding ${hiddenCount > 1 ? "them" : "it"}` +
+          (activeFilters().length ? ` (${activeFilters().join(", ")}).` : ".")
         : "No funds match. Try a ticker, a company name, or clear a filter.";
     $("hiddenHint").hidden = !hiddenCount;
+    $("emptyMsg").classList.toggle("warn", !!hiddenCount);
     $("dtnote").hidden = !state.dt;
     document.querySelectorAll("#levChips .chip").forEach(b => b.classList.toggle("on", state.levs.includes(b.dataset.v)));
     renderHead();

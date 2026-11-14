@@ -180,7 +180,11 @@
       <thead><tr id="head"></tr></thead>
       <tbody id="rows"></tbody>
     </table>
-    <div class="empty" id="empty" hidden>No funds match. Try a ticker, a company name, or clear a filter.</div>
+    <div class="empty" id="empty" hidden><span id="emptyMsg">No funds match. Try a ticker, a company name, or clear a filter.</span>
+      <div id="hiddenHint" hidden style="margin-top:12px">
+        <button id="showHidden">Show them (keep my search, clear filters)</button>
+      </div>
+    </div>
   </div>
 
   <p class="note">Click the &#9734; on any fund to add it to your favorites (saved in this browser). TradingView list downloads the funds shown as a watchlist you can import in TradingView (Watchlist menu &gt; Import list). Click an underlying ticker to see every fund on it. Click an ETF ticker to open its TradingView chart (hover it for the full fund name).
@@ -378,9 +382,18 @@
     $("favOnly").classList.toggle("on", state.fav);
     $("favOnly").innerHTML = (state.fav ? "&#9733;" : "&#9734;") + " Favorites" + (favs.size ? ` (${favs.size})` : "");
     $("favClear").hidden = !favs.size;
-    $("empty").textContent = state.fav && !favs.size
+    // when filters hide every match for the search, say so and offer a one-click fix
+    let hiddenCount = 0;
+    if (!rows.length && terms.length) {
+      hiddenCount = ALL.filter(r => terms.every(t => r._hay.includes(t))).length;
+    }
+    $("emptyMsg").textContent = state.fav && !favs.size
       ? "No favorites yet. Click the \u2606 next to any fund to add it."
-      : "No funds match. Try a ticker, a company name, or clear a filter.";
+      : hiddenCount
+        ? `${hiddenCount} fund${hiddenCount > 1 ? "s" : ""} match "${state.q.trim()}" but your filters are hiding ${hiddenCount > 1 ? "them" : "it"}` +
+          (state.kind ? ` (Type is set to ${state.kind}).` : ".")
+        : "No funds match. Try a ticker, a company name, or clear a filter.";
+    $("hiddenHint").hidden = !hiddenCount;
     $("dtnote").hidden = !state.dt;
     document.querySelectorAll("#levChips .chip").forEach(b => b.classList.toggle("on", state.levs.includes(b.dataset.v)));
     renderHead();
@@ -528,6 +541,11 @@
   $("csv").addEventListener("click", exportCsv);
   $("tv").addEventListener("click", exportTradingView);
   $("favOnly").addEventListener("click", () => { state.fav = !state.fav; render(); });
+  $("showHidden").addEventListener("click", () => {
+    const q = state.q;
+    Object.assign(state, blank(), {q});
+    syncControls(); render();
+  });
   // two-step confirm: first click arms it, second click within 4s clears
   let clearTimer = null;
   $("favClear").addEventListener("click", () => {

@@ -80,6 +80,12 @@
     },
     "BITX": {
       "iss": "Volatility Shares"
+    },
+    "UVIX": {
+      "iss": "Volatility Shares"
+    },
+    "SVIX": {
+      "iss": "Volatility Shares"
     }
   }
 }

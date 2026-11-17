@@ -22,23 +22,37 @@
 <style>
   :root{
     --bg:#0d1117; --panel:#151b23; --panel2:#1c2430; --line:#2a3441;
-    --text:#e6edf3; --muted:#8b98a8; --accent:#f5b83d;
+    --text:#e6edf3; --muted:#8b98a8; --accent:#f5b83d; --on-accent:#111; --accent-rgb:245,184,61;
+    --page:#0d1117; --star-off:#4a5566;
+    --hdr-bg:transparent; --hdr-text:var(--text); --hdr-muted:var(--muted); --hdr-accent:var(--accent); --hdr-line:var(--line);
+    --liq-high:#2ecc71; --liq-good:#7ec8ff; --liq-thin:#f5b83d; --liq-ill:#ff5c5c;
     --long:#2ecc71; --long-bg:rgba(46,204,113,.12);
     --inv:#ff5c5c; --inv-bg:rgba(255,92,92,.12);
     --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--text);
+  [hidden]{display:none !important}
+  body{margin:0;background:var(--page);color:var(--text);
     font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-  header{padding:22px 24px 14px;border-bottom:1px solid var(--line);
+  header{padding:22px 24px 14px;border-bottom:1px solid var(--hdr-line);background:var(--hdr-bg);color:var(--hdr-text);
     display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px 24px}
   .brand{display:flex;align-items:center;gap:12px}
   .logo{width:38px;height:38px;border-radius:9px;background:var(--panel2);
     border:1px solid var(--line);display:grid;place-items:center}
   h1{margin:0;font-size:22px;letter-spacing:.3px}
-  h1 span{color:var(--accent)}
-  .tag{color:var(--muted);font-size:13px;margin-top:2px}
-  .meta{margin-left:auto;color:var(--muted);font-size:12px;text-align:right}
+  h1 span{color:var(--hdr-accent)}
+  .tag{color:var(--hdr-muted);font-size:13px;margin-top:2px}
+  .meta{margin-left:auto;color:var(--hdr-muted);font-size:12px;text-align:right}
+  .logo img{width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block}
+  .logo.img{width:46px;height:46px;border-radius:10px;overflow:hidden;border:0;background:none}
+  .hdr-right{margin-left:auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:flex-end}
+  .hdr-right .meta{margin-left:0}
+  .community{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:10px;font-weight:700;font-size:13px;
+    text-decoration:none;background:var(--hdr-text);color:var(--hdr-bg)}
+  .community:hover{filter:brightness(.95)}
+  .credit{color:var(--muted);font-size:12px;margin-top:6px}
+  .credit a{color:var(--accent);text-decoration:none}
+  .credit a:hover{text-decoration:underline}
   main{padding:16px 24px 40px}
   .search{display:flex;gap:10px;flex-wrap:wrap}
   .search input{flex:1 1 360px;background:var(--panel);border:1px solid var(--line);
@@ -48,6 +62,7 @@
   select,button{background:var(--panel);color:var(--text);border:1px solid var(--line);
     border-radius:8px;padding:7px 10px;font-size:13px;cursor:pointer}
   select:focus,button:focus-visible{outline:1px solid var(--accent)}
+  option{background:var(--panel);color:var(--text)}
   button:hover{border-color:var(--accent)}
   .seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
   .seg button{border:0;border-radius:0;border-right:1px solid var(--line)}
@@ -79,55 +94,116 @@
   .chips{display:inline-flex;gap:6px;align-items:center;flex-wrap:wrap}
   .chips .lbl{color:var(--muted);font-size:12px;margin-right:2px}
   .chip{padding:6px 11px;border-radius:999px;font-family:var(--mono);font-weight:700}
-  .chip.on{background:var(--accent);color:#111;border-color:var(--accent)}
+  .chip.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
   #dt{font-weight:700}
-  #dt.on{background:var(--accent);color:#111;border-color:var(--accent)}
+  #dt.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
   .dtnote{color:var(--muted);font-size:12px;margin:2px 0 4px}
   .liq{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:600}
-  .liq.High{color:#2ecc71;background:rgba(46,204,113,.12)}
-  .liq.Good{color:#7ec8ff;background:rgba(126,200,255,.12)}
-  .liq.Thin{color:#f5b83d;background:rgba(245,184,61,.12)}
-  .liq.Illiquid{color:#ff5c5c;background:rgba(255,92,92,.12)}
+  .liq.High{color:var(--liq-high);background:color-mix(in srgb,var(--liq-high) 13%,transparent)}
+  .liq.Good{color:var(--liq-good);background:color-mix(in srgb,var(--liq-good) 13%,transparent)}
+  .liq.Thin{color:var(--liq-thin);background:color-mix(in srgb,var(--liq-thin) 13%,transparent)}
+  .liq.Illiquid{color:var(--liq-ill);background:color-mix(in srgb,var(--liq-ill) 13%,transparent)}
   .liq.None{color:var(--muted)}
   .dim{color:var(--muted)}
-  .star{background:none;border:0;padding:0 2px;font-size:17px;line-height:1;color:#4a5566;cursor:pointer}
+  .star{background:none;border:0;padding:0 2px;font-size:17px;line-height:1;color:var(--star-off);cursor:pointer}
   .star:hover{color:var(--accent)}
   .star.on{color:var(--accent)}
-  #favOnly.on{background:var(--accent);color:#111;border-color:var(--accent)}
+  #favOnly.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
   th.favcol,td.favcol{width:34px;padding-right:0;text-align:center}
   #saveDef.saved{color:var(--accent);border-color:var(--accent)}
   .linkish{background:none;border:0;color:var(--muted);text-decoration:underline;padding:7px 4px}
   .linkish:hover{color:var(--text)}
-  #showHidden{background:var(--accent);color:#111;border-color:var(--accent);font-weight:700;
-    font-size:14px;padding:10px 18px;border-radius:10px;box-shadow:0 0 0 0 rgba(245,184,61,.6);
+  #showHidden{background:var(--accent);color:var(--on-accent);border-color:var(--accent);font-weight:700;
+    font-size:14px;padding:10px 18px;border-radius:10px;box-shadow:0 0 0 0 rgba(var(--accent-rgb),.6);
     animation:pulse 1.6s ease-out 3}
   #showHidden:hover{filter:brightness(1.08)}
   #emptyMsg.warn{color:var(--accent);font-weight:600}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(245,184,61,.6)}100%{box-shadow:0 0 0 14px rgba(245,184,61,0)}}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(var(--accent-rgb),.6)}100%{box-shadow:0 0 0 14px rgba(var(--accent-rgb),0)}}
   .empty{padding:40px;text-align:center;color:var(--muted)}
   .note{color:var(--muted);font-size:12px;margin-top:14px}
-  mark{background:rgba(245,184,61,.25);color:inherit;border-radius:3px}
+  mark{background:rgba(var(--accent-rgb),.25);color:inherit;border-radius:3px}
   @media (max-width:760px){
     header,main{padding-left:12px;padding-right:12px}
     .meta{margin-left:0;text-align:left}
+    .hdr-right{margin-left:0;justify-content:flex-start}
     .wrap{max-height:none}
   }
 </style>
+<script>
+/* ---------- Brands ----------
+   The main page is MountyTech's. kt/ and le/ are generated copies (scripts/build_brands.py)
+   that set window.BRAND_ID before this runs. Colors match the MT Economic Calendar brands. */
+window.BRANDS = {
+  mt: { name: "Leverage Scout" },
+  kt: {
+    name: "Kingdom Traders Leverage Scout",
+    title: ["Kingdom", "Traders"],
+    tag: "Leverage Scout · every leveraged and inverse ETF, searchable by company, ticker, sector and industry",
+    logo: "brands/kt/mark.png",
+    credit: 'Kingdom Traders · Developed by <a href="https://github.com/mountytechWV" target="_blank" rel="noopener">MountyTech</a>',
+    vars: {
+      "--page": "#00051B", "--bg": "#00051B", "--panel": "#06102E", "--panel2": "#0A1638", "--line": "#1F2C5A",
+      "--text": "#E8E6F2", "--muted": "#9A9CC0", "--star-off": "#33407A",
+      "--accent": "#E0B25C", "--on-accent": "#00051B", "--accent-rgb": "224,178,92",
+      "--hdr-bg": "linear-gradient(180deg,#3A1F6E,#2B1A5B)", "--hdr-text": "#FFFFFF", "--hdr-muted": "#CFC3EE",
+      "--hdr-accent": "#E0B25C", "--hdr-line": "#4A2A84",
+      "--liq-good": "#B79CFF", "--liq-thin": "#E0B25C"
+    }
+  },
+  le: {
+    name: "LE Trading Academy Leverage Scout",
+    title: ["Leverage", "Scout"],
+    tag: "LE Trading Academy · every leveraged and inverse ETF, searchable by company, ticker, sector and industry",
+    logo: "brands/le/icon-192.png",
+    community: { label: "Join the free Discord", url: "https://discord.gg/letradingacademy" },
+    credit: 'Brought to you by <a href="https://letradingacademy.com/" target="_blank" rel="noopener">LE Trading Academy</a> · Developed by <a href="https://github.com/mountytechWV" target="_blank" rel="noopener">MountyTech</a>',
+    scheme: "light",
+    vars: {
+      "--page": "#F7F6FC", "--bg": "#FFFFFF", "--panel": "#FFFFFF", "--panel2": "#F4F2FB", "--line": "#E2DEF0",
+      "--text": "#14163D", "--muted": "#5B5F82", "--star-off": "#C4BCE3",
+      "--accent": "#673AB7", "--on-accent": "#FFFFFF", "--accent-rgb": "103,58,183",
+      "--long": "#0B9A55", "--long-bg": "rgba(11,154,85,.10)", "--inv": "#D6334A", "--inv-bg": "rgba(214,51,74,.10)",
+      "--hdr-bg": "#673AB7", "--hdr-text": "#FFFFFF", "--hdr-muted": "#E3D9F5", "--hdr-accent": "#D1C4E9", "--hdr-line": "#5E35B1",
+      "--liq-high": "#0B9A55", "--liq-good": "#3F51B5", "--liq-thin": "#B7791F", "--liq-ill": "#D6334A"
+    }
+  }
+};
+(function(){
+  var id = window.BRAND_ID && window.BRANDS[window.BRAND_ID] ? window.BRAND_ID : "mt";
+  var B = window.BRAND = window.BRANDS[id]; B.id = id;
+  var st = document.documentElement.style;
+  if (B.vars) Object.keys(B.vars).forEach(function(k){ st.setProperty(k, B.vars[k]); });
+  if (B.scheme) document.documentElement.style.colorScheme = B.scheme;
+  if (id === "mt") return;
+  document.addEventListener("DOMContentLoaded", function(){
+    var esc = function(t){ return String(t).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); };
+    var logo = document.getElementById("logo");
+    if (B.logo){ logo.className = "logo img"; logo.innerHTML = '<img src="' + B.logo + '" alt="">'; }
+    document.getElementById("brandTitle").innerHTML = esc(B.title[0]) + " <span>" + esc(B.title[1]) + "</span>";
+    document.getElementById("brandTag").textContent = B.tag;
+    if (B.community){ var c = document.getElementById("community"); c.href = B.community.url; c.textContent = B.community.label; c.hidden = false; }
+    if (B.credit){ var cr = document.getElementById("credit"); cr.innerHTML = B.credit; cr.hidden = false; }
+  });
+})();
+</script>
 </head>
 <body>
 <header>
   <div class="brand">
-    <div class="logo" aria-hidden="true">
+    <div class="logo" id="logo" aria-hidden="true">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f5b83d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/><path d="M7.5 12l2-2.5 1.5 1.5 2.5-3.5"/>
       </svg>
     </div>
     <div>
-      <h1>Leverage <span>Scout</span></h1>
-      <div class="tag">Every leveraged and inverse ETF, searchable by company, ticker, sector and industry</div>
+      <h1 id="brandTitle">Leverage <span>Scout</span></h1>
+      <div class="tag" id="brandTag">Every leveraged and inverse ETF, searchable by company, ticker, sector and industry</div>
     </div>
   </div>
-  <div class="meta" id="meta"></div>
+  <div class="hdr-right">
+    <a class="community" id="community" hidden target="_blank" rel="noopener"></a>
+    <div class="meta" id="meta"></div>
+  </div>
 </header>
 
 <main>
@@ -197,6 +273,7 @@
     Volume, $ volume and ADR (average daily range, high vs low) are 20-trading-day averages. Liquidity: High = $100M+ a day, Good = $20M+, Thin = $2M+, Illiquid = under $2M.
     Leveraged and inverse funds reset daily, so returns over longer periods drift from the stated multiple.
     Data is for education, not a recommendation.</p>
+  <p class="credit" id="credit" hidden></p>
 </main>
 
 <script src="data/etfs.js"></script>
@@ -431,7 +508,7 @@
       if (Array.isArray(v) ? v.length : v) p.set(k, Array.isArray(v) ? v.join(",") : (v === true ? "1" : v));
     });
     const h = p.toString();
-    history.replaceState(null, "", h ? "#" + h : location.pathname + location.search);
+    history.replaceState(null, "", location.pathname + location.search + (h ? "#" + h : ""));
   }
   function readHash(){
     const p = new URLSearchParams(location.hash.slice(1));

@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<!-- Generated from ../index.html by scripts/build_brands.py. Edit index.html, not this file. -->
+<html lang="en">
+<head>
+<base href="../">
+<script>window.BRAND_ID = "kt";</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kingdom Traders Leverage Scout</title>
+<meta name="description" content="Search every leveraged and inverse ETF by company, ETF ticker, stock ticker, sector and industry.">
+<meta name="theme-color" content="#3A1F6E">
+<link rel="icon" href="brands/kt/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="brands/kt/icon-192.png">
+<link rel="manifest" href="kt/manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="KT Scout">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta property="og:title" content="Kingdom Traders Leverage Scout">
+<meta property="og:description" content="Kingdom Traders: every US leveraged and inverse ETF in one searchable list, with volume, liquidity and a Day Trade filter.">
+<meta property="og:image" content="https://mountytechwv.github.io/leverage-scout/brands/kt/icon-512.png">
+<meta property="og:url" content="https://mountytechwv.github.io/leverage-scout/kt/">
+<meta name="twitter:card" content="summary">
+<style>
+  :root{
+    --bg:#0d1117; --panel:#151b23; --panel2:#1c2430; --line:#2a3441;
+    --text:#e6edf3; --muted:#8b98a8; --accent:#f5b83d; --on-accent:#111; --accent-rgb:245,184,61;
+    --page:#0d1117; --star-off:#4a5566;
+    --hdr-bg:transparent; --hdr-text:var(--text); --hdr-muted:var(--muted); --hdr-accent:var(--accent); --hdr-line:var(--line);
+    --liq-high:#2ecc71; --liq-good:#7ec8ff; --liq-thin:#f5b83d; --liq-ill:#ff5c5c;
+    --long:#2ecc71; --long-bg:rgba(46,204,113,.12);
+    --inv:#ff5c5c; --inv-bg:rgba(255,92,92,.12);
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  [hidden]{display:none !important}
+  body{margin:0;background:var(--page);color:var(--text);
+    font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  header{padding:22px 24px 14px;border-bottom:1px solid var(--hdr-line);background:var(--hdr-bg);color:var(--hdr-text);
+    display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px 24px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{width:38px;height:38px;border-radius:9px;background:var(--panel2);
+    border:1px solid var(--line);display:grid;place-items:center}
+  h1{margin:0;font-size:22px;letter-spacing:.3px}
+  h1 span{color:var(--hdr-accent)}
+  .tag{color:var(--hdr-muted);font-size:13px;margin-top:2px}
+  .meta{margin-left:auto;color:var(--hdr-muted);font-size:12px;text-align:right}
+  .logo img{width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block}
+  .logo.img{width:46px;height:46px;border-radius:10px;overflow:hidden;border:0;background:none}
+  .hdr-right{margin-left:auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:flex-end}
+  .hdr-right .meta{margin-left:0}
+  .community{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:10px;font-weight:700;font-size:13px;
+    text-decoration:none;background:var(--hdr-text);color:var(--hdr-bg)}
+  .community:hover{filter:brightness(.95)}
+  .credit{color:var(--muted);font-size:12px;margin-top:6px}
+  .credit a{color:var(--accent);text-decoration:none}
+  .credit a:hover{text-decoration:underline}
+  main{padding:16px 24px 40px}
+  .search{display:flex;gap:10px;flex-wrap:wrap}
+  .search input{flex:1 1 360px;background:var(--panel);border:1px solid var(--line);
+    color:var(--text);border-radius:10px;padding:12px 14px;font-size:16px;outline:none}
+  .search input:focus{border-color:var(--accent)}
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 6px}
+  select,button{background:var(--panel);color:var(--text);border:1px solid var(--line);
+    border-radius:8px;padding:7px 10px;font-size:13px;cursor:pointer}
+  select:focus,button:focus-visible{outline:1px solid var(--accent)}
+  option{background:var(--panel);color:var(--text)}
+  button:hover{border-color:var(--accent)}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .seg button{border:0;border-radius:0;border-right:1px solid var(--line)}
+  .seg button:last-child{border-right:0}
+  .seg button.on{background:var(--panel2);color:var(--accent)}
+  .summary{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;color:var(--muted);
+    font-size:13px;margin:10px 0}
+  .summary b{color:var(--text)}
+  .spacer{flex:1}
+  .wrap{border:1px solid var(--line);border-radius:12px;overflow:auto;max-height:calc(100vh - 250px)}
+  table{width:100%;border-collapse:collapse;min-width:900px}
+  th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+  th{position:sticky;top:0;background:var(--panel2);font-size:12px;text-transform:uppercase;
+    letter-spacing:.5px;color:var(--muted);cursor:pointer;user-select:none;z-index:1}
+  th:hover{color:var(--text)}
+  th.sorted{color:var(--accent)}
+  tbody tr:hover{background:var(--panel)}
+  td.name{white-space:normal;min-width:240px;color:var(--muted)}
+  .tk{font-family:var(--mono);font-weight:700;color:var(--text);text-decoration:none}
+  .tk:hover{color:var(--accent);text-decoration:underline}
+  .u{font-family:var(--mono);font-weight:600;cursor:pointer}
+  .u:hover{color:var(--accent)}
+  .pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:600}
+  .Long{color:var(--long);background:var(--long-bg)}
+  .Inverse{color:var(--inv);background:var(--inv-bg)}
+  .lev{font-family:var(--mono);font-weight:700}
+  .num{text-align:right;font-family:var(--mono)}
+  .kind{color:var(--muted);font-size:12px}
+  .chips{display:inline-flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .chips .lbl{color:var(--muted);font-size:12px;margin-right:2px}
+  .chip{padding:6px 11px;border-radius:999px;font-family:var(--mono);font-weight:700}
+  .chip.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+  #dt{font-weight:700}
+  #dt.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+  .dtnote{color:var(--muted);font-size:12px;margin:2px 0 4px}
+  .liq{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:600}
+  .liq.High{color:var(--liq-high);background:color-mix(in srgb,var(--liq-high) 13%,transparent)}
+  .liq.Good{color:var(--liq-good);background:color-mix(in srgb,var(--liq-good) 13%,transparent)}
+  .liq.Thin{color:var(--liq-thin);background:color-mix(in srgb,var(--liq-thin) 13%,transparent)}
+  .liq.Illiquid{color:var(--liq-ill);background:color-mix(in srgb,var(--liq-ill) 13%,transparent)}
+  .liq.None{color:var(--muted)}
+  .dim{color:var(--muted)}
+  .star{background:none;border:0;padding:0 2px;font-size:17px;line-height:1;color:var(--star-off);cursor:pointer}
+  .star:hover{color:var(--accent)}
+  .star.on{color:var(--accent)}
+  #favOnly.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+  th.favcol,td.favcol{width:34px;padding-right:0;text-align:center}
+  #saveDef.saved{color:var(--accent);border-color:var(--accent)}
+  .linkish{background:none;border:0;color:var(--muted);text-decoration:underline;padding:7px 4px}
+  .linkish:hover{color:var(--text)}
+  #showHidden{background:var(--accent);color:var(--on-accent);border-color:var(--accent);font-weight:700;
+    font-size:14px;padding:10px 18px;border-radius:10px;box-shadow:0 0 0 0 rgba(var(--accent-rgb),.6);
+    animation:pulse 1.6s ease-out 3}
+  #showHidden:hover{filter:brightness(1.08)}
+  #emptyMsg.warn{color:var(--accent);font-weight:600}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(var(--accent-rgb),.6)}100%{box-shadow:0 0 0 14px rgba(var(--accent-rgb),0)}}
+  .empty{padding:40px;text-align:center;color:var(--muted)}
+  .note{color:var(--muted);font-size:12px;margin-top:14px}
+  mark{background:rgba(var(--accent-rgb),.25);color:inherit;border-radius:3px}
+  @media (max-width:760px){
+    header,main{padding-left:12px;padding-right:12px}
+    .meta{margin-left:0;text-align:left}
+    .hdr-right{margin-left:0;justify-content:flex-start}
+    .wrap{max-height:none}
+  }
+</style>
+<script>
+/* ---------- Brands ----------
+   The main page is MountyTech's. kt/ and le/ are generated copies (scripts/build_brands.py)
+   that set window.BRAND_ID before this runs. Colors match the MT Economic Calendar brands. */
+window.BRANDS = {
+  mt: { name: "Leverage Scout" },
+  kt: {
+    name: "Kingdom Traders Leverage Scout",
+    title: ["Kingdom", "Traders"],
+    tag: "Leverage Scout · every leveraged and inverse ETF, searchable by company, ticker, sector and industry",
+    logo: "brands/kt/mark.png",
+    credit: 'Kingdom Traders · Developed by <a href="https://github.com/mountytechWV" target="_blank" rel="noopener">MountyTech</a>',
+    vars: {
+      "--page": "#00051B", "--bg": "#00051B", "--panel": "#06102E", "--panel2": "#0A1638", "--line": "#1F2C5A",
+      "--text": "#E8E6F2", "--muted": "#9A9CC0", "--star-off": "#33407A",
+      "--accent": "#E0B25C", "--on-accent": "#00051B", "--accent-rgb": "224,178,92",
+      "--hdr-bg": "linear-gradient(180deg,#3A1F6E,#2B1A5B)", "--hdr-text": "#FFFFFF", "--hdr-muted": "#CFC3EE",
+      "--hdr-accent": "#E0B25C", "--hdr-line": "#4A2A84",
+      "--liq-good": "#B79CFF", "--liq-thin": "#E0B25C"
+    }
+  },
+  le: {
+    name: "LE Trading Academy Leverage Scout",
+    title: ["Leverage", "Scout"],
+    tag: "LE Trading Academy · every leveraged and inverse ETF, searchable by company, ticker, sector and industry",
+    logo: "brands/le/icon-192.png",
+    community: { label: "Join the free Discord", url: "https://discord.gg/letradingacademy" },
+    credit: 'Brought to you by <a href="https://letradingacademy.com/" target="_blank" rel="noopener">LE Trading Academy</a> · Developed by <a href="https://github.com/mountytechWV" target="_blank" rel="noopener">MountyTech</a>',
+    scheme: "light",
+    vars: {
+      "--page": "#F7F6FC", "--bg": "#FFFFFF", "--panel": "#FFFFFF", "--panel2": "#F4F2FB", "--line": "#E2DEF0",
+      "--text": "#14163D", "--muted": "#5B5F82", "--star-off": "#C4BCE3",
+      "--accent": "#673AB7", "--on-accent": "#FFFFFF", "--accent-rgb": "103,58,183",
+      "--long": "#0B9A55", "--long-bg": "rgba(11,154,85,.10)", "--inv": "#D6334A", "--inv-bg": "rgba(214,51,74,.10)",
+      "--hdr-bg": "#673AB7", "--hdr-text": "#FFFFFF", "--hdr-muted": "#E3D9F5", "--hdr-accent": "#D1C4E9", "--hdr-line": "#5E35B1",
+      "--liq-high": "#0B9A55", "--liq-good": "#3F51B5", "--liq-thin": "#B7791F", "--liq-ill": "#D6334A"
+    }
+  }
+};
+(function(){
+  var id = window.BRAND_ID && window.BRANDS[window.BRAND_ID] ? window.BRAND_ID : "mt";
+  var B = window.BRAND = window.BRANDS[id]; B.id = id;
+  var st = document.documentElement.style;
+  if (B.vars) Object.keys(B.vars).forEach(function(k){ st.setProperty(k, B.vars[k]); });
+  if (B.scheme) document.documentElement.style.colorScheme = B.scheme;
+  if (id === "mt") return;
+  document.addEventListener("DOMContentLoaded", function(){
+    var esc = function(t){ return String(t).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); };
+    var logo = document.getElementById("logo");
+    if (B.logo){ logo.className = "logo img"; logo.innerHTML = '<img src="' + B.logo + '" alt="">'; }
+    document.getElementById("brandTitle").innerHTML = esc(B.title[0]) + " <span>" + esc(B.title[1]) + "</span>";
+    document.getElementById("brandTag").textContent = B.tag;
+    if (B.community){ var c = document.getElementById("community"); c.href = B.community.url; c.textContent = B.community.label; c.hidden = false; }
+    if (B.credit){ var cr = document.getElementById("credit"); cr.innerHTML = B.credit; cr.hidden = false; }
+  });
+})();
+</script>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <div class="logo" id="logo" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f5b83d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/><path d="M7.5 12l2-2.5 1.5 1.5 2.5-3.5"/>
+      </svg>
+    </div>
+    <div>
+      <h1 id="brandTitle">Leverage <span>Scout</span></h1>
+      <div class="tag" id="brandTag">Every leveraged and inverse ETF, searchable by company, ticker, sector and industry</div>
+    </div>
+  </div>
+  <div class="hdr-right">
+    <a class="community" id="community" hidden target="_blank" rel="noopener"></a>
+    <div class="meta" id="meta"></div>
+  </div>
+</header>
+
+<main>
+  <div class="search">
+    <input id="q" type="search" autocomplete="off" spellcheck="false"
+      placeholder="Search: NVDA, Tesla, SOXL, semiconductors, biotech, Direxion...">
+  </div>
+
+  <div class="filters">
+    <button id="dt" title="Avg dollar volume $25M+, price $5+, average daily range 4%+">&#9889; Day Trade</button>
+    <button id="favOnly" title="Show only the funds you starred">&#9734; Favorites</button>
+    <button id="favClear" class="linkish" hidden title="Remove the star from every fund">Clear favorites</button>
+    <div class="seg" id="dirSeg" role="group" aria-label="Direction">
+      <button data-v="" class="on">All</button>
+      <button data-v="Long">Long</button>
+      <button data-v="Inverse">Inverse</button>
+    </div>
+    <div class="chips" id="levChips" role="group" aria-label="Leverage"><span class="lbl">Leverage</span></div>
+  </div>
+  <div class="filters">
+    <select id="kind" aria-label="Type"><option value="">All types</option></select>
+    <select id="sec" aria-label="Sector"><option value="">All sectors</option></select>
+    <select id="ind" aria-label="Industry"><option value="">All industries</option></select>
+    <select id="iss" aria-label="Issuer"><option value="">All issuers</option></select>
+    <select id="mv" aria-label="Minimum average volume">
+      <option value="">Any volume</option>
+      <option value="100000">Avg vol 100K+</option>
+      <option value="500000">Avg vol 500K+</option>
+      <option value="1000000">Avg vol 1M+</option>
+      <option value="5000000">Avg vol 5M+</option>
+      <option value="10000000">Avg vol 10M+</option>
+    </select>
+    <select id="madr" aria-label="Minimum average daily range">
+      <option value="">Any range</option>
+      <option value="3">ADR 3%+</option>
+      <option value="5">ADR 5%+</option>
+      <option value="8">ADR 8%+</option>
+      <option value="12">ADR 12%+</option>
+    </select>
+    <button id="reset">Reset</button>
+    <button id="saveDef" title="Open Leverage Scout with these filters and sort every time">&#9733; Save as my default</button>
+    <button id="clearDef" class="linkish" hidden title="Forget your saved default view">Clear default</button>
+  </div>
+  <div class="dtnote" id="dtnote" hidden>Day Trade: avg dollar volume $25M+, price $5+, average daily range 4%+ (20-day averages).</div>
+
+  <div class="summary">
+    <span><b id="shown">0</b> of <span id="total">0</span> funds</span>
+    <span id="split"></span>
+    <span class="spacer"></span>
+    <button id="tv" title="Download the funds shown as a TradingView watchlist (Watchlist menu > Import list)">TradingView list</button>
+    <button id="csv">Export CSV</button>
+  </div>
+
+  <div class="wrap">
+    <table>
+      <thead><tr id="head"></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="empty" id="empty" hidden><span id="emptyMsg">No funds match. Try a ticker, a company name, or clear a filter.</span>
+      <div id="hiddenHint" hidden style="margin-top:12px">
+        <button id="showHidden">Show them (keep my search, clear filters)</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="note">Click the &#9734; on any fund to add it to your favorites (saved in this browser). TradingView list downloads the funds shown as a watchlist you can import in TradingView (Watchlist menu &gt; Import list). Click an underlying ticker to see every fund on it. Click an ETF ticker to open its TradingView chart (hover it for the full fund name).
+    Volume, $ volume and ADR (average daily range, high vs low) are 20-trading-day averages. Liquidity: High = $100M+ a day, Good = $20M+, Thin = $2M+, Illiquid = under $2M.
+    Leveraged and inverse funds reset daily, so returns over longer periods drift from the stated multiple.
+    Data is for education, not a recommendation.</p>
+  <p class="credit" id="credit" hidden></p>
+</main>
+
+<script src="data/etfs.js"></script>
+<script>
+(function(){
+  const DATA = window.LEVERAGE_SCOUT || {etfs:[], updated:"", source:""};
+  const DT = {adv:25e6, px:5, adr:4};   // Day Trade rules
+
+  function liqTier(adv){
+    if (adv == null) return "None";
+    if (adv >= 100e6) return "High";
+    if (adv >= 20e6) return "Good";
+    if (adv >= 2e6) return "Thin";
+    return "Illiquid";
+  }
+  const ALL = DATA.etfs.map(r => Object.assign({}, r, {
+    liq: liqTier(r.adv),
+    _hay: [r.t, r.n, r.iss, r.u, r.un, r.sec, r.ind, r.kind, r.dir, r.lev + "x"]
+      .filter(Boolean).join(" ").toLowerCase()
+  }));
+  const HAS_VOL = ALL.some(r => r.adv != null);
+  const has = k => ALL.some(r => r[k] != null && r[k] !== "");
+
+  const LIQ_RANK = {High:4, Good:3, Thin:2, Illiquid:1, None:0};
+  const COLS = [
+    {k:"fav", label:"&#9733;"},
+    {k:"t",   label:"ETF"},
+    {k:"dir", label:"Direction"},
+    {k:"lev", label:"Lev", num:true},
+    {k:"u",   label:"Underlying"},
+    {k:"un",  label:"Company / Index"},
+    {k:"sec", label:"Sector"},
+    {k:"ind", label:"Industry"},
+    {k:"px",  label:"Price", num:true, show:has("px")},
+    {k:"av",  label:"Avg Vol", num:true, show:has("av")},
+    {k:"adv", label:"Avg $ Vol", num:true, show:has("adv")},
+    {k:"liq", label:"Liquidity", show:HAS_VOL},
+    {k:"adr", label:"ADR %", num:true, show:has("adr")},
+    {k:"iss", label:"Issuer"},
+    {k:"er",  label:"Exp %", num:true, show:has("er")},
+    {k:"aum", label:"AUM", num:true, show:has("aum")},
+    {k:"inc", label:"Since", show:has("inc")},
+  ].filter(c => c.show !== false);
+
+  const $ = id => document.getElementById(id);
+  const KEYS = ["q","dir","levs","kind","sec","ind","iss","mv","madr","dt"];
+  const blank = () => ({q:"", dir:"", levs:[], kind:"", sec:"", ind:"", iss:"", mv:"", madr:"", dt:false, fav:false});
+
+  // ---------- favorites (stored in this browser only) ----------
+  const FAV_STORE = "leverageScout.favorites.v1";
+  const favs = new Set((() => {
+    try { return JSON.parse(localStorage.getItem(FAV_STORE) || "[]"); } catch (e) { return []; }
+  })());
+  function saveFavs(){
+    try { localStorage.setItem(FAV_STORE, JSON.stringify([...favs].sort())); } catch (e) {}
+  }
+  const state = Object.assign(blank(), {sortK: HAS_VOL ? "adv" : "u", sortAsc: !HAS_VOL});
+
+  // ---------- helpers ----------
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const uniq = arr => [...new Set(arr.filter(v => v !== "" && v != null))];
+  function big(v, dollar){
+    if (v == null || v === "") return "";
+    v = Number(v); if (!isFinite(v)) return "";
+    const p = dollar ? "$" : "";
+    if (v >= 1e9) return p + (v/1e9).toFixed(1) + "B";
+    if (v >= 1e6) return p + (v/1e6).toFixed(v >= 1e8 ? 0 : 1) + "M";
+    if (v >= 1e3) return p + (v/1e3).toFixed(0) + "K";
+    return p + v.toFixed(0);
+  }
+  function fmtEr(v){
+    if (v == null || v === "") return "";
+    v = Number(v); if (!isFinite(v)) return "";
+    return (v < 0.05 ? v*100 : v).toFixed(2);
+  }
+  const fmtPx = v => v == null ? "" : Number(v).toFixed(2);
+  const fmtAdr = v => v == null ? "" : Number(v).toFixed(1);
+  function hl(text, terms){
+    let out = esc(text);
+    terms.forEach(t => {
+      if (t.length < 2) return;
+      const re = new RegExp("(" + t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "ig");
+      out = out.replace(re, "<mark>$1</mark>");
+    });
+    return out;
+  }
+  function fillSelect(sel, values, label){
+    const cur = sel.value;
+    sel.innerHTML = `<option value="">${label}</option>` +
+      values.map(v => `<option value="${esc(v)}">${esc(v)}</option>`).join("");
+    sel.value = values.map(String).includes(cur) ? cur : "";
+  }
+  const dayTradeOk = r => (r.adv ?? 0) >= DT.adv && (r.px ?? 0) >= DT.px && (r.adr ?? 0) >= DT.adr;
+
+  // ---------- filters ----------
+  function populate(){
+    const levs = uniq(ALL.map(r => r.lev)).sort((a,b) => a-b);
+    $("levChips").insertAdjacentHTML("beforeend",
+      levs.map(v => `<button class="chip" data-v="${v}">${v}x</button>`).join(""));
+    fillSelect($("kind"), uniq(ALL.map(r => r.kind)).sort(), "All types");
+    fillSelect($("sec"), uniq(ALL.map(r => r.sec)).sort(), "All sectors");
+    fillSelect($("iss"), uniq(ALL.map(r => r.iss)).sort(), "All issuers");
+    refreshIndustries();
+    if (!HAS_VOL) { ["dt","mv","madr"].forEach(id => $(id).hidden = true); }
+  }
+  function refreshIndustries(){
+    const pool = state.sec ? ALL.filter(r => r.sec === state.sec) : ALL;
+    fillSelect($("ind"), uniq(pool.map(r => r.ind)).sort(), "All industries");
+    state.ind = $("ind").value;
+  }
+
+  function filtered(){
+    const terms = state.q.toLowerCase().split(/\s+/).filter(Boolean);
+    const qUp = state.q.trim().toUpperCase();
+    const mv = Number(state.mv) || 0, madr = Number(state.madr) || 0;
+    let rows = ALL.filter(r =>
+      (!state.dir  || r.dir === state.dir) &&
+      (!state.levs.length || state.levs.includes(String(r.lev))) &&
+      (!state.kind || r.kind === state.kind) &&
+      (!state.sec  || r.sec === state.sec) &&
+      (!state.ind  || r.ind === state.ind) &&
+      (!state.iss  || r.iss === state.iss) &&
+      (!mv   || (r.av ?? 0) >= mv) &&
+      (!madr || (r.adr ?? 0) >= madr) &&
+      (!state.dt || dayTradeOk(r)) &&
+      (!state.fav || favs.has(r.t)) &&
+      terms.every(t => r._hay.includes(t))
+    );
+    const k = state.sortK, dir = state.sortAsc ? 1 : -1;
+    const val = r => {
+      if (k === "u") return (r.u || r.un || "~").toLowerCase();
+      if (k === "liq") return r.adv ?? null;
+      if (k === "fav") return favs.has(r.t) ? 0 : 1;
+      const v = r[k];
+      return (v == null || v === "") ? null : (typeof v === "string" ? v.toLowerCase() : v);
+    };
+    rows.sort((a,b) => {
+      if (qUp) {
+        const ea = (a.t === qUp || a.u === qUp) ? 0 : 1, eb = (b.t === qUp || b.u === qUp) ? 0 : 1;
+        if (ea !== eb) return ea - eb;
+      }
+      const va = val(a), vb = val(b);
+      if (va === null && vb !== null) return 1;
+      if (vb === null && va !== null) return -1;
+      if (va < vb) return -dir; if (va > vb) return dir;
+      if (a.dir !== b.dir) return a.dir === "Long" ? -1 : 1;
+      if (a.lev !== b.lev) return b.lev - a.lev;
+      return a.t < b.t ? -1 : 1;
+    });
+    return {rows, terms};
+  }
+
+  function activeFilters(){
+    const f = [];
+    if (state.dt) f.push("Day Trade is on");
+    if (state.fav) f.push("Favorites only");
+    if (state.kind) f.push(`Type: ${state.kind}`);
+    if (state.dir) f.push(`Direction: ${state.dir}`);
+    if (state.levs.length) f.push(`Leverage: ${state.levs.map(v => v + "x").join("/")}`);
+    if (state.sec) f.push(`Sector: ${state.sec}`);
+    if (state.ind) f.push(`Industry: ${state.ind}`);
+    if (state.iss) f.push(`Issuer: ${state.iss}`);
+    if (state.mv) f.push("Min volume");
+    if (state.madr) f.push("Min ADR");
+    return f;
+  }
+
+  // ---------- render ----------
+  function cell(r, c, terms){
+    switch (c.k){
+      case "fav": { const on = favs.has(r.t);
+        return `<td class="favcol"><button class="star${on ? " on" : ""}" data-t="${esc(r.t)}" title="${on ? "Remove from" : "Add to"} favorites" aria-label="Favorite ${esc(r.t)}">${on ? "&#9733;" : "&#9734;"}</button></td>`; }
+      case "t":   return `<td><a class="tk" title="${esc(r.n)}" href="https://www.tradingview.com/chart/?symbol=${encodeURIComponent(r.t)}" target="_blank" rel="noopener">${hl(r.t, terms)}</a>${r.type === "ETN" ? ' <span class="kind">ETN</span>' : ""}</td>`;
+      case "dir": return `<td><span class="pill ${r.dir}">${r.dir}</span></td>`;
+      case "lev": return `<td class="num lev">${r.dir === "Inverse" ? "-" : ""}${r.lev}x</td>`;
+      case "u":   return `<td>${r.u ? `<span class="u" data-u="${esc(r.u)}" title="Show all funds on ${esc(r.u)}">${hl(r.u, terms)}</span>` : `<span class="kind">${esc(r.kind || "")}</span>`}</td>`;
+      case "px":  return `<td class="num">${fmtPx(r.px)}</td>`;
+      case "av":  return `<td class="num">${big(r.av)}</td>`;
+      case "adv": return `<td class="num">${big(r.adv, true)}</td>`;
+      case "liq": return `<td><span class="liq ${r.liq}">${r.liq === "None" ? "No data" : r.liq}</span></td>`;
+      case "adr": return `<td class="num">${fmtAdr(r.adr)}</td>`;
+      case "er":  return `<td class="num">${fmtEr(r.er)}</td>`;
+      case "aum": return `<td class="num">${big(r.aum, true)}</td>`;
+      case "inc": return `<td>${esc(r.inc || "")}</td>`;
+      default:    return `<td>${hl(r[c.k] || "", terms)}</td>`;
+    }
+  }
+  function renderHead(){
+    $("head").innerHTML = COLS.map(c => {
+      const on = state.sortK === c.k;
+      return `<th data-k="${c.k}" class="${on ? "sorted" : ""}${c.num ? " num" : ""}${c.k === "fav" ? " favcol" : ""}" ${c.k === "fav" ? 'title="Sort favorites to the top"' : ""}>${c.label}${on ? (state.sortAsc ? " ▲" : " ▼") : ""}</th>`;
+    }).join("");
+  }
+  function render(){
+    const {rows, terms} = filtered();
+    $("shown").textContent = rows.length;
+    $("total").textContent = ALL.length;
+    const longs = rows.filter(r => r.dir === "Long").length;
+    $("split").innerHTML = `<span class="pill Long">${longs} long</span> <span class="pill Inverse">${rows.length - longs} inverse</span>`;
+    $("empty").hidden = rows.length > 0;
+    $("rows").innerHTML = rows.slice(0, 1500).map(r =>
+      `<tr>${COLS.map(c => cell(r, c, terms)).join("")}</tr>`).join("");
+    $("dt").classList.toggle("on", state.dt);
+    $("favOnly").classList.toggle("on", state.fav);
+    $("favOnly").innerHTML = (state.fav ? "&#9733;" : "&#9734;") + " Favorites" + (favs.size ? ` (${favs.size})` : "");
+    $("favClear").hidden = !favs.size;
+    // when filters hide every match for the search, say so and offer a one-click fix
+    let hiddenCount = 0;
+    if (!rows.length && terms.length) {
+      hiddenCount = ALL.filter(r => terms.every(t => r._hay.includes(t))).length;
+    }
+    $("emptyMsg").textContent = state.fav && !favs.size
+      ? "No favorites yet. Click the \u2606 next to any fund to add it."
+      : hiddenCount
+        ? `${hiddenCount} fund${hiddenCount > 1 ? "s match" : " matches"} "${state.q.trim()}" but your filters are hiding ${hiddenCount > 1 ? "them" : "it"}` +
+          (activeFilters().length ? ` (${activeFilters().join(", ")}).` : ".")
+        : "No funds match. Try a ticker, a company name, or clear a filter.";
+    $("hiddenHint").hidden = !hiddenCount;
+    $("emptyMsg").classList.toggle("warn", !!hiddenCount);
+    $("dtnote").hidden = !state.dt;
+    document.querySelectorAll("#levChips .chip").forEach(b => b.classList.toggle("on", state.levs.includes(b.dataset.v)));
+    renderHead();
+    writeHash();
+    updateDefaultButtons();
+  }
+
+  // ---------- URL hash so a search can be shared ----------
+  function writeHash(){
+    const p = new URLSearchParams();
+    KEYS.forEach(k => {
+      const v = state[k];
+      if (Array.isArray(v) ? v.length : v) p.set(k, Array.isArray(v) ? v.join(",") : (v === true ? "1" : v));
+    });
+    const h = p.toString();
+    history.replaceState(null, "", location.pathname + location.search + (h ? "#" + h : ""));
+  }
+  function readHash(){
+    const p = new URLSearchParams(location.hash.slice(1));
+    let found = false;
+    KEYS.forEach(k => {
+      const v = p.get(k); if (!v) return;
+      found = true;
+      state[k] = k === "levs" ? v.split(",") : (k === "dt" ? true : v);
+    });
+    return found;
+  }
+
+  // ---------- saved default view (stored in this browser only) ----------
+  const STORE = "leverageScout.defaultView.v1";
+  const snapshot = () => JSON.stringify({
+    q: state.q, dir: state.dir, levs: [...state.levs].sort(), kind: state.kind, sec: state.sec,
+    ind: state.ind, iss: state.iss, mv: state.mv, madr: state.madr, dt: state.dt,
+    fav: state.fav, sortK: state.sortK, sortAsc: state.sortAsc
+  });
+  function getDefault(){
+    try { return localStorage.getItem(STORE); } catch (e) { return null; }
+  }
+  function loadDefault(){
+    const raw = getDefault(); if (!raw) return false;
+    try {
+      const d = JSON.parse(raw);
+      Object.assign(state, blank(), d, {levs: Array.isArray(d.levs) ? d.levs : []});
+      return true;
+    } catch (e) { return false; }
+  }
+  function updateDefaultButtons(){
+    const raw = getDefault();
+    const same = raw && raw === snapshot();
+    $("saveDef").classList.toggle("saved", !!same);
+    $("saveDef").innerHTML = same ? "&#9733; My default" : "&#9733; Save as my default";
+    $("clearDef").hidden = !raw;
+  }
+  function syncControls(){
+    $("q").value = state.q;
+    ["kind","sec","iss","mv","madr"].forEach(k => $(k).value = state[k]);
+    refreshIndustries();
+    $("ind").value = state.ind; state.ind = $("ind").value;
+    document.querySelectorAll("#dirSeg button").forEach(b => b.classList.toggle("on", b.dataset.v === state.dir));
+  }
+
+  // ---------- TradingView watchlist ----------
+  // Same format TradingView exports: one line, comma separated,
+  // "###SECTION" headers followed by EXCHANGE:TICKER symbols.
+  function exportTradingView(){
+    const {rows} = filtered();
+    if (!rows.length) return;
+    const sym = r => r.ex ? `${r.ex}:${r.t}` : r.t;
+    const long = rows.filter(r => r.dir === "Long").map(sym);
+    const inv  = rows.filter(r => r.dir === "Inverse").map(sym);
+    const parts = [];
+    if (long.length) parts.push("###LEVERAGED LONG", ...long);
+    if (inv.length)  parts.push("###INVERSE", ...inv);
+    const blob = new Blob([parts.join(",")], {type:"text/plain"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = state.fav ? "Leverage_Scout_Favorites.txt" : "Leverage_Scout.txt";
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+
+  // ---------- CSV ----------
+  function exportCsv(){
+    const {rows} = filtered();
+    const head = ["ETF","Fund Name","Direction","Leverage","Underlying","Company/Index","Sector","Industry","Price","Avg Volume","Avg Dollar Volume","Liquidity","ADR %","Issuer","Expense %","AUM","Inception","Type"];
+    const q = v => `"${String(v ?? "").replace(/"/g,'""')}"`;
+    const lines = [head.join(",")].concat(rows.map(r => [
+      r.t, r.n, r.dir, (r.dir === "Inverse" ? "-" : "") + r.lev + "x", r.u, r.un, r.sec, r.ind,
+      r.px ?? "", r.av ?? "", r.adv ?? "", r.liq === "None" ? "" : r.liq, r.adr ?? "",
+      r.iss, fmtEr(r.er), r.aum ?? "", r.inc, r.type
+    ].map(q).join(",")));
+    const blob = new Blob([lines.join("\n")], {type:"text/csv"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "leverage-scout.csv";
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+
+  // ---------- events ----------
+  let t;
+  $("q").addEventListener("input", e => { clearTimeout(t); t = setTimeout(() => { state.q = e.target.value; render(); }, 120); });
+  ["kind","iss","ind","mv","madr"].forEach(k => $(k).addEventListener("change", e => { state[k] = e.target.value; render(); }));
+  $("sec").addEventListener("change", e => { state.sec = e.target.value; refreshIndustries(); render(); });
+  $("dirSeg").addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    state.dir = b.dataset.v;
+    document.querySelectorAll("#dirSeg button").forEach(x => x.classList.toggle("on", x === b));
+    render();
+  });
+  $("levChips").addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    const v = b.dataset.v;
+    state.levs = state.levs.includes(v) ? state.levs.filter(x => x !== v) : state.levs.concat(v);
+    render();
+  });
+  $("dt").addEventListener("click", () => {
+    state.dt = !state.dt;
+    if (state.dt) { state.sortK = "adv"; state.sortAsc = false; }
+    render();
+  });
+  $("head").addEventListener("click", e => {
+    const th = e.target.closest("th"); if (!th) return;
+    const k = th.dataset.k;
+    if (state.sortK === k) state.sortAsc = !state.sortAsc;
+    else { state.sortK = k; state.sortAsc = !["lev","px","av","adv","liq","adr","aum"].includes(k); }
+    render();
+  });
+  $("rows").addEventListener("click", e => {
+    const st = e.target.closest(".star");
+    if (st) {
+      const tk = st.dataset.t;
+      favs.has(tk) ? favs.delete(tk) : favs.add(tk);
+      saveFavs(); render();
+      return;
+    }
+    const u = e.target.closest(".u"); if (!u) return;
+    state.q = u.dataset.u; $("q").value = state.q; render();
+    window.scrollTo({top:0, behavior:"smooth"});
+  });
+  $("reset").addEventListener("click", () => {
+    Object.assign(state, blank());
+    syncControls(); render(); $("q").focus();
+  });
+  $("csv").addEventListener("click", exportCsv);
+  $("tv").addEventListener("click", exportTradingView);
+  $("favOnly").addEventListener("click", () => { state.fav = !state.fav; render(); });
+  $("showHidden").addEventListener("click", () => {
+    const q = state.q;
+    Object.assign(state, blank(), {q});
+    syncControls(); render();
+  });
+  // two-step confirm: first click arms it, second click within 4s clears
+  let clearTimer = null;
+  $("favClear").addEventListener("click", () => {
+    const btn = $("favClear");
+    if (!clearTimer) {
+      btn.textContent = `Click again to clear all ${favs.size}`;
+      btn.style.color = "var(--inv)";
+      clearTimer = setTimeout(() => { clearTimer = null; btn.textContent = "Clear favorites"; btn.style.color = ""; }, 4000);
+      return;
+    }
+    clearTimeout(clearTimer); clearTimer = null;
+    favs.clear(); saveFavs();
+    btn.textContent = "Clear favorites"; btn.style.color = "";
+    render();
+  });
+  $("saveDef").addEventListener("click", () => {
+    try { localStorage.setItem(STORE, snapshot()); }
+    catch (e) { alert("Your browser blocked saving settings (private mode?)."); }
+    updateDefaultButtons();
+  });
+  $("clearDef").addEventListener("click", () => {
+    try { localStorage.removeItem(STORE); } catch (e) {}
+    updateDefaultButtons();
+  });
+
+  // ---------- init ----------
+  const upd = DATA.updated ? new Date(DATA.updated) : null;
+  $("meta").innerHTML = `${DATA.count || ALL.length} funds &middot; ${esc(DATA.source || "")}<br>Updated ${upd ? upd.toLocaleString() : "never"}`
+    + (HAS_VOL ? "" : `<br><span style="color:var(--accent)">Run a refresh to load volume data</span>`);
+  populate();
+  if (!readHash()) loadDefault();
+  syncControls();
+  render();
+  $("q").focus();
+})();
+if ("serviceWorker" in navigator && location.protocol === "https:") {
+  navigator.serviceWorker.register("sw.js").catch(() => {});
+}
+</script>
+</body>
+</html>

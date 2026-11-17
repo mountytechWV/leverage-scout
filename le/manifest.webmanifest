@@ -1,0 +1,25 @@
+{
+  "name": "LE Trading Academy Leverage Scout",
+  "short_name": "LE Scout",
+  "description": "LE Trading Academy: every US leveraged and inverse ETF in one searchable list, with volume, liquidity and a Day Trade filter.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F7F6FC",
+  "theme_color": "#673AB7",
+  "icons": [
+    {
+      "src": "../brands/le/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "../brands/le/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

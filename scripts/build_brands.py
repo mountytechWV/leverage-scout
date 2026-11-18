@@ -74,7 +74,9 @@ def manifest(brand_id, b):
         "name": b["name"],
         "short_name": b["short"],
         "description": b["description"],
-        "id": "./",
+        # Must be unique per brand. Browsers resolve "id" against the site's origin,
+        # not the manifest's folder, so "./" made kt and le the same app.
+        "id": f"/leverage-scout/{brand_id}/",
         "start_url": "./",
         "scope": "./",
         "display": "standalone",

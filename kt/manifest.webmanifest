@@ -2,7 +2,7 @@
   "name": "Kingdom Traders Leverage Scout",
   "short_name": "KT Scout",
   "description": "Kingdom Traders: every US leveraged and inverse ETF in one searchable list, with volume, liquidity and a Day Trade filter.",
-  "id": "./",
+  "id": "/leverage-scout/kt/",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

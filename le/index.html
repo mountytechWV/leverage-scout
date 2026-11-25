@@ -124,6 +124,64 @@
   .empty{padding:40px;text-align:center;color:var(--muted)}
   .note{color:var(--muted);font-size:12px;margin-top:14px}
   mark{background:rgba(var(--accent-rgb),.25);color:inherit;border-radius:3px}
+  /* ---------- gear + settings drawer ---------- */
+  .gear{display:inline-grid;place-items:center;width:38px;height:38px;padding:0;border-radius:10px;
+    background:transparent;color:var(--hdr-text);border:1px solid var(--hdr-line)}
+  .gear:hover{border-color:var(--hdr-accent);color:var(--hdr-accent)}
+  .gear svg{display:block}
+  body.compact td{padding-top:5px;padding-bottom:5px}
+  .scrim{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:40;opacity:0;transition:opacity .18s}
+  .scrim.open{opacity:1}
+  .drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100vw);z-index:41;background:var(--bg);
+    border-left:1px solid var(--line);display:flex;flex-direction:column;transform:translateX(100%);
+    transition:transform .2s ease;box-shadow:-12px 0 30px rgba(0,0,0,.35)}
+  .drawer.open{transform:none}
+  .dhead{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid var(--line)}
+  .dhead h2{margin:0;font-size:15px;letter-spacing:2px;text-transform:uppercase}
+  .dclose{width:34px;height:34px;padding:0;font-size:18px;line-height:1}
+  .dtabs{display:flex;gap:4px;padding:10px 18px 0;border-bottom:1px solid var(--line)}
+  .dtabs button{border:0;border-bottom:2px solid transparent;border-radius:0;background:none;color:var(--muted);
+    padding:8px 10px;font-weight:600}
+  .dtabs button.on{color:var(--accent);border-bottom-color:var(--accent)}
+  .dbody{overflow:auto;padding:4px 18px 30px;flex:1}
+  .sec{padding:16px 0;border-bottom:1px solid var(--line)}
+  .sec:last-child{border-bottom:0}
+  .sec h3{margin:0 0 10px;font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--accent)}
+  .sec p{margin:0 0 10px;color:var(--muted)}
+  .sec p b,.sec li b{color:var(--text)}
+  .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:7px 0}
+  .row small{display:block;color:var(--muted);font-size:12px}
+  .tog{appearance:none;-webkit-appearance:none;width:38px;height:22px;border-radius:999px;background:var(--panel2);
+    border:1px solid var(--line);position:relative;cursor:pointer;flex:none;margin:0}
+  .tog::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--muted);transition:.15s}
+  .tog:checked{background:var(--accent);border-color:var(--accent)}
+  .tog:checked::after{left:18px;background:var(--on-accent)}
+  .colgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px}
+  .colgrid label{display:flex;align-items:center;gap:8px;cursor:pointer}
+  .colgrid input{accent-color:var(--accent);width:15px;height:15px;margin:0}
+  .btnrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .btn-strong{background:var(--accent);color:var(--on-accent);border-color:var(--accent);font-weight:700}
+  .plat{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:10px 0 12px}
+  .plat button{flex:1;border:0;border-radius:0;border-right:1px solid var(--line);font-weight:600;font-size:12px}
+  .plat button:last-child{border-right:0}
+  .plat button.on{background:var(--accent);color:var(--on-accent)}
+  ol.steps{list-style:none;counter-reset:s;margin:0;padding:0}
+  ol.steps li{counter-increment:s;position:relative;padding:0 0 10px 34px}
+  ol.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:22px;height:22px;border-radius:5px;
+    background:var(--accent);color:var(--on-accent);font-weight:700;font-size:12px;display:grid;place-items:center}
+  .callout{border-left:3px solid var(--accent);background:var(--panel);padding:10px 12px;border-radius:0 8px 8px 0;
+    color:var(--muted);font-size:13px;margin-top:8px}
+  .ok{color:var(--long);font-weight:600}
+  .help dt{font-weight:700;margin-top:12px}
+  .help dd{margin:4px 0 0;color:var(--muted)}
+  .help ul{margin:6px 0 0;padding-left:18px;color:var(--muted)}
+  kbd{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;
+    padding:1px 6px;background:var(--panel);color:var(--text)}
+  .about-name{font-size:16px;font-weight:700}
+  .builtby{display:inline-flex;align-items:center;gap:6px;margin:8px 0 12px;font-weight:700;letter-spacing:1.4px;
+    text-transform:uppercase;font-size:12px;color:var(--accent);text-decoration:none}
+  .builtby:hover{text-decoration:underline}
+  .hint-gear{color:var(--accent);background:none;border:0;padding:0;font-size:12px;text-decoration:underline;cursor:pointer}
   @media (max-width:760px){
     header,main{padding-left:12px;padding-right:12px}
     .meta{margin-left:0;text-align:left}
@@ -205,8 +263,172 @@ window.BRANDS = {
   <div class="hdr-right">
     <a class="community" id="community" hidden target="_blank" rel="noopener"></a>
     <div class="meta" id="meta"></div>
+    <button class="gear" id="gear" title="Settings, help and install (press ,)" aria-label="Settings and help" aria-haspopup="dialog" aria-controls="drawer">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
   </div>
 </header>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" hidden>
+  <div class="dhead">
+    <h2 id="drawerTitle">Settings</h2>
+    <button class="dclose" id="dclose" aria-label="Close settings">&times;</button>
+  </div>
+  <div class="dtabs" role="tablist">
+    <button data-tab="settings" class="on" role="tab">Settings</button>
+    <button data-tab="help" role="tab">Help</button>
+    <button data-tab="install" role="tab">Install</button>
+    <button data-tab="about" role="tab">About</button>
+  </div>
+  <div class="dbody">
+
+    <!-- SETTINGS -->
+    <div data-pane="settings">
+      <div class="sec">
+        <h3>Display</h3>
+        <label class="row"><span>Compact rows<small>Fit more funds on screen</small></span><input type="checkbox" class="tog" id="setCompact"></label>
+        <div class="row"><span>Ticker links open<small>Where clicking an ETF ticker takes you</small></span>
+          <select id="setLink">
+            <option value="chart">TradingView chart</option>
+            <option value="symbol">TradingView overview</option>
+            <option value="yahoo">Yahoo Finance</option>
+          </select>
+        </div>
+      </div>
+      <div class="sec">
+        <h3>Columns</h3>
+        <p>Pick which columns show in the table. ETF and &#9733; always show.</p>
+        <div class="colgrid" id="setCols"></div>
+        <div class="btnrow"><button id="colsAll" class="linkish">Show all</button><button id="colsLean" class="linkish">Day-trader view</button></div>
+      </div>
+      <div class="sec">
+        <h3>Your saved stuff</h3>
+        <p id="savedSummary"></p>
+        <div class="btnrow">
+          <button id="copyLink" title="Copy a link that opens this exact search and filters">Copy link to this view</button>
+        </div>
+        <div class="btnrow">
+          <button id="backup" title="Download your favorites, default view and settings">Back up</button>
+          <button id="restoreBtn" title="Load a backup file">Restore</button>
+          <input type="file" id="restoreFile" accept=".json,application/json" hidden>
+        </div>
+        <div class="callout">Everything is saved in this browser only. Use Back up and Restore to move your favorites to another device or browser.</div>
+      </div>
+      <div class="sec">
+        <h3>Reset</h3>
+        <p>Clears your favorites, saved default view and these settings.</p>
+        <button id="factory">Reset to factory</button>
+      </div>
+    </div>
+
+    <!-- HELP -->
+    <div data-pane="help" hidden>
+      <div class="sec help">
+        <h3>Searching</h3>
+        <p>Type anything: a stock ticker (<b>NVDA</b>), an ETF ticker (<b>SOXL</b>), a company (<b>Tesla</b>), a sector or industry (<b>semiconductors</b>, <b>biotech</b>) or an issuer (<b>Direxion</b>). Several words narrow it down, for example <b>nvda inverse</b> or <b>gold 3x</b>.</p>
+        <p>Click an <b>underlying</b> ticker in the table to see every fund on it. Click an <b>ETF</b> ticker to open its chart (hover for the full fund name).</p>
+      </div>
+      <div class="sec help">
+        <h3>Filters (on the main page)</h3>
+        <dl>
+          <dt>&#9889; Day Trade</dt><dd>Only funds with average dollar volume of $25M+, price $5+ and an average daily range of 4%+ (20-day averages). Turns on biggest-volume-first sorting.</dd>
+          <dt>&#9734; Favorites</dt><dd>Star any fund, then use this to show only your starred funds.</dd>
+          <dt>Direction &amp; Leverage</dt><dd>Long or Inverse, and pick one or more multiples (2x, 3x...).</dd>
+          <dt>Type, Sector, Industry, Issuer</dt><dd>Industry list follows the sector you pick.</dd>
+          <dt>Avg vol / ADR</dt><dd>Set a minimum share volume or daily range.</dd>
+          <dt>&#9733; Save as my default</dt><dd>Leverage Scout opens with your current filters and sort every time.</dd>
+        </dl>
+      </div>
+      <div class="sec help">
+        <h3>What the columns mean</h3>
+        <dl>
+          <dt>Avg Vol / Avg $ Vol</dt><dd>Average shares and dollars traded per day over the last 20 trading days.</dd>
+          <dt>Liquidity</dt><dd><b>High</b> $100M+ a day, <b>Good</b> $20M+, <b>Thin</b> $2M+, <b>Illiquid</b> under $2M.</dd>
+          <dt>ADR %</dt><dd>Average daily range, high vs low, over 20 days. Higher means bigger intraday moves.</dd>
+          <dt>Exp % / AUM / Since</dt><dd>Expense ratio, assets under management and inception date, when available.</dd>
+        </dl>
+        <p style="margin-top:10px">Click any column header to sort. Click it again to flip the order.</p>
+      </div>
+      <div class="sec help">
+        <h3>Exporting</h3>
+        <dl>
+          <dt>TradingView list</dt><dd>Downloads the funds shown as a watchlist file. In TradingView open the Watchlist menu, choose <b>Import list</b> and pick the file. Long and Inverse funds land in their own sections.</dd>
+          <dt>Export CSV</dt><dd>Downloads the funds shown for Excel or Google Sheets.</dd>
+          <dt>Sharing a search</dt><dd>The address bar updates as you filter. Copy it (or use <b>Copy link to this view</b> in Settings) and anyone who opens it sees the same results.</dd>
+        </dl>
+      </div>
+      <div class="sec help">
+        <h3>Keyboard</h3>
+        <p><kbd>/</kbd> jump to search &nbsp; <kbd>,</kbd> open settings &nbsp; <kbd>Esc</kbd> close</p>
+      </div>
+      <div class="sec help">
+        <h3>Good to know</h3>
+        <p>Leveraged and inverse funds reset daily, so over days and weeks their returns drift from the stated multiple. They are built for short holds.</p>
+      </div>
+    </div>
+
+    <!-- INSTALL -->
+    <div data-pane="install" hidden>
+      <div class="sec">
+        <h3>Install as an app</h3>
+        <p>Put Leverage Scout on your home screen or taskbar so it opens in its own window like a regular app. It's the same site, so it always has the latest fund list.</p>
+        <p id="instStatus"></p>
+        <button id="instNow" class="btn-strong" hidden>Install Leverage Scout</button>
+        <div class="plat" id="plat" role="group" aria-label="Device">
+          <button data-p="ios">iPhone / iPad</button>
+          <button data-p="android">Android</button>
+          <button data-p="desktop">PC / Mac</button>
+        </div>
+        <ol class="steps" data-p="ios">
+          <li>Open this page in <b>Safari</b>.</li>
+          <li>Tap the <b>Share</b> button (square with an arrow), then <b>Add to Home Screen</b>.</li>
+          <li>Tap <b>Add</b>. Leverage Scout now opens full screen from its icon.</li>
+        </ol>
+        <ol class="steps" data-p="android" hidden>
+          <li>Open this page in <b>Chrome</b>.</li>
+          <li>Tap the menu <b>&#8942;</b>, then <b>Install app</b> or <b>Add to Home screen</b>.</li>
+          <li>Tap <b>Install</b>. Samsung Internet: menu &rarr; <b>Add page to</b> &rarr; <b>Home screen</b>.</li>
+        </ol>
+        <ol class="steps" data-p="desktop" hidden>
+          <li><b>Chrome:</b> click the install icon at the right end of the address bar, then <b>Install</b>. No icon? Menu <b>&#8942;</b> &rarr; <b>Cast, save and share</b> &rarr; <b>Install page as app</b>.</li>
+          <li><b>Edge:</b> menu <b>&middot;&middot;&middot;</b> &rarr; <b>Apps</b> &rarr; <b>Install this site as an app</b>. <b>Safari (Mac):</b> <b>File</b> &rarr; <b>Add to Dock</b>.</li>
+          <li>To keep it handy, right-click its taskbar icon (Windows) or Dock icon (Mac) and choose <b>Pin</b> / <b>Keep in Dock</b>.</li>
+        </ol>
+        <div class="callout" data-p="ios">On iPhone and iPad the home-screen app keeps its own favorites, separate from Safari. Use <b>Back up</b> in Safari and <b>Restore</b> in the app to bring them over.</div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <div data-pane="about" hidden>
+      <div class="sec">
+        <h3>About</h3>
+        <div class="about-name" id="aboutName">Leverage Scout</div>
+        <a class="builtby" href="https://mountytechwv.github.io/apps/" target="_blank" rel="noopener">Built by MountyTech &#8599;</a>
+        <p id="aboutBrand" hidden></p>
+        <p>Every US-listed leveraged and inverse ETF and ETN in one searchable list, with volume, liquidity and a Day Trade filter.</p>
+        <p id="aboutData"></p>
+      </div>
+      <div class="sec">
+        <h3>Data</h3>
+        <p>Fund list, prices and volume from <b>Massive</b> (formerly Polygon). Company names, sectors and industries from <b>Financial Modeling Prep</b>. The list refreshes every weekday evening.</p>
+        <p>Not affiliated with any fund issuer, Massive, FMP or TradingView.</p>
+      </div>
+      <div class="sec">
+        <h3>Privacy</h3>
+        <p>No accounts and nothing collected. Your favorites, default view and settings are stored only in your own browser.</p>
+      </div>
+      <div class="sec">
+        <h3>Disclaimer</h3>
+        <p>For education only, not a recommendation to buy or sell anything. Leveraged and inverse funds carry extra risk and reset daily. Check the issuer's prospectus before trading.</p>
+      </div>
+    </div>
+
+  </div>
+</aside>
 
 <main>
   <div class="search">
@@ -271,10 +493,10 @@ window.BRANDS = {
     </div>
   </div>
 
-  <p class="note">Click the &#9734; on any fund to add it to your favorites (saved in this browser). TradingView list downloads the funds shown as a watchlist you can import in TradingView (Watchlist menu &gt; Import list). Click an underlying ticker to see every fund on it. Click an ETF ticker to open its TradingView chart (hover it for the full fund name).
-    Volume, $ volume and ADR (average daily range, high vs low) are 20-trading-day averages. Liquidity: High = $100M+ a day, Good = $20M+, Thin = $2M+, Illiquid = under $2M.
-    Leveraged and inverse funds reset daily, so returns over longer periods drift from the stated multiple.
-    Data is for education, not a recommendation.</p>
+  <p class="note">Click the &#9734; on any fund to add it to your favorites. Click an underlying ticker to see every fund on it.
+    Volume, $ volume and ADR are 20-trading-day averages. Leveraged and inverse funds reset daily, so returns over longer periods drift from the stated multiple.
+    Data is for education, not a recommendation.
+    <button class="hint-gear" data-open="help">Help, column guide and install steps</button></p>
   <p class="credit" id="credit" hidden></p>
 </main>
 
@@ -333,6 +555,23 @@ window.BRANDS = {
     try { localStorage.setItem(FAV_STORE, JSON.stringify([...favs].sort())); } catch (e) {}
   }
   const state = Object.assign(blank(), {sortK: HAS_VOL ? "adv" : "u", sortAsc: !HAS_VOL});
+
+  // ---------- display settings (gear panel; stored in this browser only) ----------
+  const PREF_STORE = "leverageScout.settings.v1";
+  const PREF_DEFAULT = {compact:false, link:"chart", hidden:[]};
+  const prefs = Object.assign({}, PREF_DEFAULT, (() => {
+    try { return JSON.parse(localStorage.getItem(PREF_STORE) || "{}"); } catch (e) { return {}; }
+  })());
+  if (!Array.isArray(prefs.hidden)) prefs.hidden = [];
+  function savePrefs(){ try { localStorage.setItem(PREF_STORE, JSON.stringify(prefs)); } catch (e) {} }
+  const LOCKED = ["fav","t"];
+  const visibleCols = () => COLS.filter(c => LOCKED.includes(c.k) || !prefs.hidden.includes(c.k));
+  function tickerUrl(r){
+    const t = encodeURIComponent(r.t);
+    if (prefs.link === "yahoo") return `https://finance.yahoo.com/quote/${t}`;
+    if (prefs.link === "symbol") return `https://www.tradingview.com/symbols/${r.ex ? encodeURIComponent(r.ex) + "-" : ""}${t}/`;
+    return `https://www.tradingview.com/chart/?symbol=${r.ex ? encodeURIComponent(r.ex) + "%3A" : ""}${t}`;
+  }
 
   // ---------- helpers ----------
   const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -448,7 +687,7 @@ window.BRANDS = {
     switch (c.k){
       case "fav": { const on = favs.has(r.t);
         return `<td class="favcol"><button class="star${on ? " on" : ""}" data-t="${esc(r.t)}" title="${on ? "Remove from" : "Add to"} favorites" aria-label="Favorite ${esc(r.t)}">${on ? "&#9733;" : "&#9734;"}</button></td>`; }
-      case "t":   return `<td><a class="tk" title="${esc(r.n)}" href="https://www.tradingview.com/chart/?symbol=${encodeURIComponent(r.t)}" target="_blank" rel="noopener">${hl(r.t, terms)}</a>${r.type === "ETN" ? ' <span class="kind">ETN</span>' : ""}</td>`;
+      case "t":   return `<td><a class="tk" title="${esc(r.n)}" href="${tickerUrl(r)}" target="_blank" rel="noopener">${hl(r.t, terms)}</a>${r.type === "ETN" ? ' <span class="kind">ETN</span>' : ""}</td>`;
       case "dir": return `<td><span class="pill ${r.dir}">${r.dir}</span></td>`;
       case "lev": return `<td class="num lev">${r.dir === "Inverse" ? "-" : ""}${r.lev}x</td>`;
       case "u":   return `<td>${r.u ? `<span class="u" data-u="${esc(r.u)}" title="Show all funds on ${esc(r.u)}">${hl(r.u, terms)}</span>` : `<span class="kind">${esc(r.kind || "")}</span>`}</td>`;
@@ -464,12 +703,13 @@ window.BRANDS = {
     }
   }
   function renderHead(){
-    $("head").innerHTML = COLS.map(c => {
+    $("head").innerHTML = visibleCols().map(c => {
       const on = state.sortK === c.k;
       return `<th data-k="${c.k}" class="${on ? "sorted" : ""}${c.num ? " num" : ""}${c.k === "fav" ? " favcol" : ""}" ${c.k === "fav" ? 'title="Sort favorites to the top"' : ""}>${c.label}${on ? (state.sortAsc ? " ▲" : " ▼") : ""}</th>`;
     }).join("");
   }
   function render(){
+    const COLS = visibleCols();
     const {rows, terms} = filtered();
     $("shown").textContent = rows.length;
     $("total").textContent = ALL.length;
@@ -672,7 +912,162 @@ window.BRANDS = {
     updateDefaultButtons();
   });
 
+  // ---------- gear: settings / help / install / about ----------
+  const drawer = $("drawer"), scrim = $("scrim");
+  let lastFocus = null;
+  function showTab(name){
+    drawer.querySelectorAll(".dtabs button").forEach(b => b.classList.toggle("on", b.dataset.tab === name));
+    drawer.querySelectorAll("[data-pane]").forEach(p => p.hidden = p.dataset.pane !== name);
+    $("drawerTitle").textContent = {settings:"Settings", help:"Help", install:"Install", about:"About"}[name];
+    drawer.querySelector(".dbody").scrollTop = 0;
+  }
+  function openDrawer(tab){
+    lastFocus = document.activeElement;
+    fillSettings(); fillInstall();
+    showTab(tab || "settings");
+    drawer.hidden = false; scrim.hidden = false;
+    requestAnimationFrame(() => { drawer.classList.add("open"); scrim.classList.add("open"); });
+    $("dclose").focus();
+  }
+  function closeDrawer(){
+    drawer.classList.remove("open"); scrim.classList.remove("open");
+    setTimeout(() => { if (!drawer.classList.contains("open")) { drawer.hidden = true; scrim.hidden = true; } }, 220);
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  const isOpen = () => !drawer.hidden && drawer.classList.contains("open");
+
+  function fillSettings(){
+    $("setCompact").checked = !!prefs.compact;
+    $("setLink").value = prefs.link;
+    $("setCols").innerHTML = COLS.filter(c => !LOCKED.includes(c.k)).map(c =>
+      `<label><input type="checkbox" data-k="${c.k}"${prefs.hidden.includes(c.k) ? "" : " checked"}> ${c.label}</label>`).join("");
+    const hasDef = !!getDefault();
+    $("savedSummary").innerHTML = `<b>${favs.size}</b> favorite${favs.size === 1 ? "" : "s"} &middot; default view ${hasDef ? "<b>saved</b>" : "not saved"}`;
+  }
+  function applyPrefs(){
+    document.body.classList.toggle("compact", !!prefs.compact);
+    if (!LOCKED.includes(state.sortK) && prefs.hidden.includes(state.sortK)) { state.sortK = "t"; state.sortAsc = true; }
+  }
+  $("setCompact").addEventListener("change", e => { prefs.compact = e.target.checked; savePrefs(); applyPrefs(); });
+  $("setLink").addEventListener("change", e => { prefs.link = e.target.value; savePrefs(); render(); });
+  $("setCols").addEventListener("change", e => {
+    const k = e.target.dataset.k; if (!k) return;
+    prefs.hidden = e.target.checked ? prefs.hidden.filter(x => x !== k) : prefs.hidden.concat(k);
+    savePrefs(); applyPrefs(); render();
+  });
+  $("colsAll").addEventListener("click", () => { prefs.hidden = []; savePrefs(); fillSettings(); applyPrefs(); render(); });
+  $("colsLean").addEventListener("click", () => {
+    prefs.hidden = ["un","sec","ind","er","aum","inc"]; savePrefs(); fillSettings(); applyPrefs(); render();
+  });
+
+  function flash(btn, msg){
+    const old = btn.textContent; btn.textContent = msg;
+    setTimeout(() => { btn.textContent = old; }, 1800);
+  }
+  $("copyLink").addEventListener("click", () => {
+    const url = location.href, btn = $("copyLink");
+    (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject())
+      .then(() => flash(btn, "Link copied"))
+      .catch(() => { window.prompt("Copy this link:", url); });
+  });
+  $("backup").addEventListener("click", () => {
+    const data = {app:"leverage-scout", v:1, saved:new Date().toISOString(),
+      favorites:[...favs].sort(), defaultView:getDefault() ? JSON.parse(getDefault()) : null, settings:prefs};
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type:"application/json"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "leverage-scout-backup.json";
+    a.click(); URL.revokeObjectURL(a.href);
+  });
+  $("restoreBtn").addEventListener("click", () => $("restoreFile").click());
+  $("restoreFile").addEventListener("change", e => {
+    const f = e.target.files[0]; if (!f) return;
+    f.text().then(txt => {
+      const d = JSON.parse(txt);
+      if (d.app !== "leverage-scout") throw new Error("not a backup");
+      if (Array.isArray(d.favorites)) { d.favorites.forEach(t => favs.add(String(t))); saveFavs(); }
+      if (d.settings) { Object.assign(prefs, PREF_DEFAULT, d.settings); if (!Array.isArray(prefs.hidden)) prefs.hidden = []; savePrefs(); }
+      if (d.defaultView) { try { localStorage.setItem(STORE, JSON.stringify(d.defaultView)); } catch (err) {} }
+      fillSettings(); applyPrefs(); render();
+      flash($("restoreBtn"), "Restored");
+    }).catch(() => flash($("restoreBtn"), "Not a Leverage Scout backup"))
+      .finally(() => { e.target.value = ""; });
+  });
+  let factoryTimer = null;
+  $("factory").addEventListener("click", () => {
+    const btn = $("factory");
+    if (!factoryTimer) {
+      btn.textContent = "Click again to erase everything";
+      btn.style.color = "var(--inv)"; btn.style.borderColor = "var(--inv)";
+      factoryTimer = setTimeout(() => { factoryTimer = null; btn.textContent = "Reset to factory"; btn.style.color = btn.style.borderColor = ""; }, 4000);
+      return;
+    }
+    clearTimeout(factoryTimer); factoryTimer = null;
+    try { [FAV_STORE, STORE, PREF_STORE].forEach(k => localStorage.removeItem(k)); } catch (e) {}
+    favs.clear();
+    Object.assign(prefs, PREF_DEFAULT, {hidden:[]});
+    Object.assign(state, blank(), {sortK: HAS_VOL ? "adv" : "u", sortAsc: !HAS_VOL});
+    btn.textContent = "Reset to factory"; btn.style.color = btn.style.borderColor = "";
+    syncControls(); applyPrefs(); render(); fillSettings();
+    flash(btn, "Done, back to factory");
+  });
+
+  // install
+  let installEvt = null;
+  window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); installEvt = e; fillInstall(); });
+  window.addEventListener("appinstalled", () => { installEvt = null; fillInstall(); });
+  const isInstalled = () => matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+  function guessPlatform(){
+    const ua = navigator.userAgent;
+    if (/iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)) return "ios";
+    if (/Android/.test(ua)) return "android";
+    return "desktop";
+  }
+  function showPlat(p){
+    $("plat").querySelectorAll("button").forEach(b => b.classList.toggle("on", b.dataset.p === p));
+    $("drawer").querySelectorAll('[data-pane="install"] [data-p]:not(button)').forEach(el => el.hidden = el.dataset.p !== p);
+  }
+  let platPicked = null;
+  function fillInstall(){
+    $("instStatus").innerHTML = isInstalled() ? '<span class="ok">&#10003; You\'re using the installed app.</span>' : "";
+    $("instNow").hidden = !installEvt || isInstalled();
+    showPlat(platPicked || guessPlatform());
+  }
+  $("plat").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { platPicked = b.dataset.p; showPlat(platPicked); } });
+  $("instNow").addEventListener("click", () => {
+    if (!installEvt) return;
+    installEvt.prompt();
+    installEvt.userChoice.finally(() => { installEvt = null; fillInstall(); });
+  });
+
+  // about
+  (function fillAbout(){
+    const B = window.BRAND || {};
+    $("aboutName").textContent = B.name || "Leverage Scout";
+    if (B.credit && B.id !== "mt") {
+      // brand pages: show who it's brought to you by, minus the "Developed by" part (Built by MountyTech covers that)
+      const parts = B.credit.split(" · ").filter(s => !/Developed by/i.test(s));
+      if (parts.length) { $("aboutBrand").innerHTML = parts.join(" · "); $("aboutBrand").hidden = false; }
+    }
+    const upd = DATA.updated ? new Date(DATA.updated) : null;
+    $("aboutData").innerHTML = `<b>${DATA.count || ALL.length}</b> funds &middot; list updated ${upd ? esc(upd.toLocaleString()) : "never"}`;
+  })();
+
+  $("gear").addEventListener("click", () => openDrawer());
+  $("dclose").addEventListener("click", closeDrawer);
+  scrim.addEventListener("click", closeDrawer);
+  drawer.querySelector(".dtabs").addEventListener("click", e => { const b = e.target.closest("button"); if (b) showTab(b.dataset.tab); });
+  document.querySelectorAll("[data-open]").forEach(b => b.addEventListener("click", () => openDrawer(b.dataset.open)));
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && isOpen()) { closeDrawer(); return; }
+    const typing = /^(INPUT|SELECT|TEXTAREA)$/.test(document.activeElement.tagName);
+    if (typing || e.ctrlKey || e.metaKey || e.altKey) return;
+    if (e.key === "," && !isOpen()) { e.preventDefault(); openDrawer(); }
+    else if (e.key === "/" && !isOpen()) { e.preventDefault(); $("q").focus(); $("q").select(); }
+  });
+
   // ---------- init ----------
+  applyPrefs();
   const upd = DATA.updated ? new Date(DATA.updated) : null;
   $("meta").innerHTML = `${DATA.count || ALL.length} funds &middot; ${esc(DATA.source || "")}<br>Updated ${upd ? upd.toLocaleString() : "never"}`
     + (HAS_VOL ? "" : `<br><span style="color:var(--accent)">Run a refresh to load volume data</span>`);
